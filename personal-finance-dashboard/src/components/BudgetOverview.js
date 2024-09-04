@@ -11,10 +11,10 @@ const BudgetOverview = ({ transactions }) => {
     .reduce((sum, t) => sum + t.amount, 0);
 
   const totalExpenses = transactions
-    .filter(t => t.type === 'expense' && !t.dueDate)
+    .filter(t => t.type === 'expense' && (!t.dueDate || t.isPaid))
     .reduce((sum, t) => sum + t.amount, 0);
 
-    const duePayments = transactions
+  const duePayments = transactions
     .filter(t => t.type === 'expense' && t.dueDate && !t.isPaid && isAfter(parseISO(t.dueDate), today))
     .sort((a, b) => parseISO(a.dueDate) - parseISO(b.dueDate));
 
@@ -22,6 +22,7 @@ const BudgetOverview = ({ transactions }) => {
 
   const currentBudget = totalIncome - totalExpenses;
   const budgetAfterDuePayments = currentBudget - totalDuePayments;
+
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
