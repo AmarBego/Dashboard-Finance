@@ -27,6 +27,13 @@ const TransactionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isPaid: {
+    type: Boolean,
+    default: false,
+  },
+  dueDate: {
+    type: Date,
+  },
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema);

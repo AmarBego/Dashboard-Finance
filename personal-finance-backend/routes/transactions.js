@@ -7,16 +7,17 @@ const Transaction = require('../models/Transaction');
 router.get('/', auth, async (req, res) => {
   try {
     const transactions = await Transaction.find({ userId: req.user.id }).sort({ date: -1 });
-    res.json(transactions); // This should be an array
+    res.json(transactions);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json({ error: 'Server error' }); // Send a JSON response for consistency
+    res.status(500).json({ error: 'Server error' });
   }
 });
+
 // Add a new transaction
 router.post('/', auth, async (req, res) => {
   try {
-    const { date, type, category, amount } = req.body;
+    const { date, type, category, amount, isPaid, dueDate } = req.body;
 
     const newTransaction = new Transaction({
       userId: req.user.id,
@@ -24,6 +25,8 @@ router.post('/', auth, async (req, res) => {
       type,
       category,
       amount,
+      isPaid,
+      dueDate,
     });
 
     const transaction = await newTransaction.save();
@@ -37,13 +40,14 @@ router.post('/', auth, async (req, res) => {
 // Update a transaction
 router.put('/:id', auth, async (req, res) => {
   try {
-    const { date, type, category, amount } = req.body;
+    const { date, type, category, amount, isPaid, dueDate } = req.body;
+
+    let transactionFields = { date, type, category, amount, isPaid };
+    if (dueDate) transactionFields.dueDate = dueDate;
 
     let transaction = await Transaction.findById(req.params.id);
 
-    if (!transaction) {
-      return res.status(404).json({ msg: 'Transaction not found' });
-    }
+    if (!transaction) return res.status(404).json({ msg: 'Transaction not found' });
 
     // Make sure user owns transaction
     if (transaction.userId.toString() !== req.user.id) {
@@ -52,14 +56,14 @@ router.put('/:id', auth, async (req, res) => {
 
     transaction = await Transaction.findByIdAndUpdate(
       req.params.id,
-      { date, type, category, amount },
+      { $set: transactionFields },
       { new: true }
     );
 
     res.json(transaction);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send('Server Error');
   }
 });
 
@@ -77,7 +81,7 @@ router.delete('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'User not authorized' });
     }
 
-    await transaction.remove();
+    await Transaction.findByIdAndDelete(req.params.id);
     res.json({ msg: 'Transaction removed' });
   } catch (err) {
     console.error(err.message);
