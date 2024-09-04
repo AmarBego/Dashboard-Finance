@@ -2,9 +2,23 @@
 
 A full-stack web application for managing personal finances, built with React, Node.js, Express, and MongoDB.
 
+![Dashboard Preview](./dashboard-preview.png)
+
 ## Project Overview
 
 This Personal Finance Dashboard allows users to track their income and expenses, visualize spending patterns, and manage their budget effectively. The application features user authentication, transaction management, and various charts for financial analysis.
+
+## Key Features
+
+- User authentication (register, login, logout)
+- Add, edit, and delete transactions
+- Categorize transactions as income or expense
+- View recent transactions
+- Visualize expenses by category (pie chart)
+- Compare income vs expenses (bar chart)
+- Monthly budget overview
+- Responsive design for mobile and desktop
+- **Light and Dark Mode**: Easily switch between light and dark themes for comfortable viewing in any environment
 
 ## Project Structure
 
@@ -20,17 +34,6 @@ For detailed setup and running instructions, please refer to the README files in
 - [Backend README](./personal-finance-backend/README.md)
 - [Frontend README](./personal-finance-dashboard/README.md)
 
-## Features
-
-- User authentication (register, login, logout)
-- Add, edit, and delete transactions
-- Categorize transactions as income or expense
-- View recent transactions
-- Visualize expenses by category (pie chart)
-- Compare income vs expenses (bar chart)
-- Monthly budget overview
-- Responsive design for mobile and desktop
-
 ## Technologies Used
 
 - Frontend:
@@ -45,6 +48,12 @@ For detailed setup and running instructions, please refer to the README files in
   - MongoDB with Mongoose
   - JSON Web Tokens (JWT) for authentication
   - bcrypt for password hashing
+
+## Theme Customization
+
+The application supports both light and dark modes, providing a comfortable viewing experience for users in different lighting conditions. Users can easily toggle between themes using the theme switch in the application interface.
+
+![Light Mode](./light-mode.png) ![Dark Mode](./dark-mode.png)
 
 ## Contributing
 

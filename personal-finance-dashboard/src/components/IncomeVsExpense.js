@@ -17,6 +17,7 @@ const IncomeVsExpense = ({ transactions }) => {
     labels: ['Income', 'Expense'],
     datasets: [
       {
+        label: 'Amount',
         data: [totalIncome, totalExpense],
         backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)'],
       },
@@ -26,18 +27,36 @@ const IncomeVsExpense = ({ transactions }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: (value) => `$${value}`
+        }
+      }
+    },
     plugins: {
       legend: {
-        position: 'top',
+        display: false,
       },
       title: {
         display: true,
         text: 'Income vs Expense',
+        color: 'rgba(255, 255, 255, 0.87)', // Light text for dark mode
       },
+      tooltip: {
+        callbacks: {
+          label: (context) => `$${context.formattedValue}`
+        }
+      }
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return (
+    <div style={{ height: '300px', width: '100%' }}>
+      <Bar data={data} options={options} />
+    </div>
+  );
 };
 
 export default IncomeVsExpense;
