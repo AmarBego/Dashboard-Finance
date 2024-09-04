@@ -46,4 +46,4 @@ The server will start on the port specified in your .env file (default: 5000).
 - PUT /api/transactions/:id - Update a transaction
 - DELETE /api/transactions/:id - Delete a transaction
 
-For more detailed API documentation, please refer to the API.md file in this directory.
+For more detailed API documentation, please refer to the [API.md](./API.md) file in this directory.
