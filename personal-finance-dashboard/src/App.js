@@ -152,6 +152,26 @@ function App() {
     }
   };
 
+  const deleteTransaction = async (transactionId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/transactions/${transactionId}`, {
+        method: 'DELETE',
+        headers: {
+          'x-auth-token': user.token
+        }
+      });
+      if (response.ok) {
+        setUserTransactions(prevTransactions => 
+          prevTransactions.filter(transaction => transaction._id !== transactionId)
+        );
+      } else {
+        console.error('Failed to delete transaction');
+      }
+    } catch (error) {
+      console.error('Error deleting transaction:', error);
+    }
+  };
+
   const handleLogin = (userData) => {
     setUser(userData);
     localStorage.setItem('token', userData.token);
@@ -200,7 +220,7 @@ function App() {
       console.error('Error updating transaction:', error);
     }
   };
-
+  
   const filteredTransactions = Array.isArray(userTransactions) 
     ? userTransactions.filter(transaction => transaction.date.startsWith(currentMonth))
     : [];
@@ -250,13 +270,15 @@ function App() {
                   path="/transactions" 
                   element={
                     user ? (
-                      <Transactions 
-                        userTransactions={userTransactions} 
-                        handleAddTransaction={handleAddTransaction}
-                        currentMonth={currentMonth}
-                        user={user}
-                        updateTransaction={updateTransaction}
-                      />
+<Transactions 
+  userTransactions={userTransactions} 
+  handleAddTransaction={handleAddTransaction}
+  currentMonth={currentMonth}
+  user={user}
+  updateTransaction={updateTransaction}
+  fetchTransactions={fetchTransactions}
+  deleteTransaction={deleteTransaction}
+/>
                     ) : (
                       <Navigate to="/login" replace />
                     )

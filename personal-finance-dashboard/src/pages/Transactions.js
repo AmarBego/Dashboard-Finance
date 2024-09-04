@@ -1,20 +1,33 @@
 import React, { useState, useMemo } from 'react';
 import { 
   Typography, List, ListItem, Paper, Button, TextField, Box, MenuItem,
-  Dialog, DialogTitle, DialogContent, DialogActions, Backdrop, Chip
+  Dialog, DialogTitle, DialogContent, DialogActions, Backdrop, Chip,
+  FormControlLabel, Checkbox, IconButton
 } from '@mui/material';
 import AddTransaction from '../components/AddTransactions';
 import { format, parseISO } from 'date-fns';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PushPinIcon from '@mui/icons-material/PushPin';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, user, updateTransaction }) => {
+const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, user, updateTransaction, fetchTransactions, deleteTransaction }) => {
   const [editingId, setEditingId] = useState(null);
   const [editedTransaction, setEditedTransaction] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   const sortedTransactions = useMemo(() => {
-    return [...userTransactions].sort((a, b) => new Date(b.date) - new Date(a.date));
+    return [...userTransactions].sort((a, b) => {
+      const aIsDue = a.type === 'expense' && a.dueDate && !a.isPaid;
+      const bIsDue = b.type === 'expense' && b.dueDate && !b.isPaid;
+      
+      if (aIsDue && !bIsDue) return -1;
+      if (!aIsDue && bIsDue) return 1;
+      if (aIsDue && bIsDue) {
+        return new Date(a.dueDate) - new Date(b.dueDate);
+      }
+      return new Date(b.date) - new Date(a.date);
+    });
   }, [userTransactions]);
 
   const handleEdit = (transaction) => {
@@ -22,21 +35,25 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
     setEditedTransaction({
       ...transaction,
       date: transaction.date ? transaction.date.split('T')[0] : '',
+      dueDate: transaction.dueDate ? transaction.dueDate.split('T')[0] : '',
       amount: transaction.amount || '',
       category: transaction.category || '',
-      type: transaction.type || ''
+      type: transaction.type || '',
+      isPaid: transaction.isPaid || false,
     });
     setIsEditDialogOpen(true);
   };
 
   const handleChange = (e) => {
-    setEditedTransaction({ ...editedTransaction, [e.target.name]: e.target.value });
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setEditedTransaction({ ...editedTransaction, [e.target.name]: value });
   };
 
   const handleSave = async () => {
     await updateTransaction(editedTransaction);
     setIsEditDialogOpen(false);
     setEditingId(null);
+    fetchTransactions();
   };
 
   const handleCancel = () => {
@@ -45,8 +62,34 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
     setEditedTransaction({});
   };
 
+  const handlePaidToggle = async (transaction) => {
+    const updatedTransaction = {
+      ...transaction,
+      isPaid: !transaction.isPaid,
+      dueDate: !transaction.isPaid ? null : transaction.dueDate,
+    };
+    try {
+      await updateTransaction(updatedTransaction);
+      await fetchTransactions();
+    } catch (error) {
+      console.error('Error updating transaction:', error);
+    }
+  };
+
+  const handleDelete = async (transactionId) => {
+    try {
+      await deleteTransaction(transactionId);
+    } catch (error) {
+      console.error('Error deleting transaction:', error);
+    }
+  };
+
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+  };
+
+  const isDuePayment = (transaction) => {
+    return transaction.type === 'expense' && transaction.dueDate && !transaction.isPaid;
   };
 
   return (
@@ -60,17 +103,22 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
               borderLeft: 6,
               borderColor: transaction.type === 'income' ? 'success.main' : 'error.main',
               mb: 2,
-              backgroundColor: 'background.paper',
+              backgroundColor: isDuePayment(transaction) ? 'rgba(255, 0, 0, 0.05)' : 'background.paper',
               borderRadius: 1,
               boxShadow: 1,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'stretch',
+              opacity: transaction.isPaid ? 0.6 : 1,
+              transition: 'opacity 0.3s ease',
             }}
           >
             <Box display="flex" justifyContent="space-between" alignItems="flex-start" width="100%">
               <Box>
-                <Typography variant="subtitle1" fontWeight="bold">
+                <Typography variant="subtitle1" fontWeight="bold" display="flex" alignItems="center">
+                  {isDuePayment(transaction) && (
+                    <PushPinIcon sx={{ mr: 1, color: 'error.main' }} fontSize="small" />
+                  )}
                   {transaction.category}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -79,18 +127,39 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
                 <Typography variant="h6" color={transaction.type === 'income' ? 'success.main' : 'error.main'}>
                   {formatCurrency(transaction.amount)}
                 </Typography>
+                {transaction.dueDate && (
+                  <Typography variant="body2" color="text.secondary">
+                    Due: {format(parseISO(transaction.dueDate), 'MMMM d, yyyy')}
+                  </Typography>
+                )}
               </Box>
-              <Chip 
-                icon={transaction.type === 'income' ? <AttachMoneyIcon /> : <ShoppingCartIcon />}
-                label={transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}
-                color={transaction.type === 'income' ? 'success' : 'error'}
-                size="small"
-              />
+              <Box>
+                <Chip 
+                  icon={transaction.type === 'income' ? <AttachMoneyIcon /> : <ShoppingCartIcon />}
+                  label={transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}
+                  color={transaction.type === 'income' ? 'success' : 'error'}
+                  size="small"
+                />
+                {transaction.type === 'expense' && transaction.dueDate && (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={transaction.isPaid}
+                        onChange={() => handlePaidToggle(transaction)}
+                      />
+                    }
+                    label="Paid"
+                  />
+                )}
+              </Box>
             </Box>
             <Box alignSelf="flex-end" mt={1}>
               <Button variant="outlined" size="small" onClick={() => handleEdit(transaction)}>
                 Edit
               </Button>
+              <IconButton onClick={() => handleDelete(transaction._id)} color="error" size="small">
+                <DeleteIcon />
+              </IconButton>
             </Box>
           </ListItem>
         ))}
@@ -142,6 +211,31 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
               onChange={handleChange}
               fullWidth
             />
+            {editedTransaction.type === 'expense' && (
+              <>
+                <TextField
+                  name="dueDate"
+                  label="Due Date (leave blank if none)"
+                  type="date"
+                  value={editedTransaction.dueDate || ''}
+                  onChange={handleChange}
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                />
+                {editedTransaction.dueDate && (
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        name="isPaid"
+                        checked={editedTransaction.isPaid || false}
+                        onChange={handleChange}
+                      />
+                    }
+                    label="Paid"
+                  />
+                )}
+              </>
+            )}
           </Box>
         </DialogContent>
         <DialogActions>

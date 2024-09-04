@@ -1,10 +1,13 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { useTheme } from '@mui/material/styles';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const IncomeVsExpense = ({ transactions }) => {
+  const theme = useTheme();
+
   const totalIncome = transactions
     .filter(t => t.type === 'income')
     .reduce((sum, t) => sum + parseFloat(t.amount), 0);
@@ -31,7 +34,19 @@ const IncomeVsExpense = ({ transactions }) => {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: (value) => `$${value}`
+          callback: (value) => `$${value}`,
+          color: theme.palette.text.primary,
+        },
+        grid: {
+          color: theme.palette.divider,
+        }
+      },
+      x: {
+        ticks: {
+          color: theme.palette.text.primary,
+        },
+        grid: {
+          display: false
         }
       }
     },
@@ -40,9 +55,7 @@ const IncomeVsExpense = ({ transactions }) => {
         display: false,
       },
       title: {
-        display: true,
-        text: 'Income vs Expense',
-        color: 'rgba(255, 255, 255, 0.87)', // Light text for dark mode
+        display: false,
       },
       tooltip: {
         callbacks: {
@@ -53,7 +66,7 @@ const IncomeVsExpense = ({ transactions }) => {
   };
 
   return (
-    <div style={{ height: '300px', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <Bar data={data} options={options} />
     </div>
   );

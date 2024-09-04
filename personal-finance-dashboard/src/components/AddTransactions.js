@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Grid, MenuItem } from '@mui/material';
+import { TextField, Button, Grid, MenuItem, FormControlLabel, Checkbox } from '@mui/material';
 import { format, parseISO } from 'date-fns';
 
 const AddTransaction = ({ onAddTransaction, currentMonth }) => {
@@ -8,10 +8,11 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
     type: 'expense',
     category: '',
     amount: '',
+    isPaid: false,
+    dueDate: '',
   });
 
   useEffect(() => {
-    // Update the date when currentMonth changes, keeping the day the same
     const [year, month] = currentMonth.split('-');
     const [, , day] = transaction.date.split('-');
     setTransaction(prev => ({
@@ -46,18 +47,20 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
         body: JSON.stringify({
           ...transaction,
           amount: parseFloat(transaction.amount),
+          dueDate: transaction.dueDate || null,
         })
       });
       if (response.ok) {
         const newTransaction = await response.json();
         onAddTransaction(newTransaction);
-        setTransaction(prev => ({
-          ...prev,
-          date: format(parseISO(prev.date), 'yyyy-MM-dd'),
+        setTransaction({
+          date: format(new Date(), 'yyyy-MM-dd'),
           type: 'expense',
           category: '',
-          amount: ''
-        }));
+          amount: '',
+          isPaid: false,
+          dueDate: '',
+        });
       } else {
         console.error('Failed to add transaction');
       }
@@ -65,7 +68,6 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
       console.error('Error adding transaction:', error);
     }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
@@ -120,6 +122,19 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
             required
           />
         </Grid>
+        {transaction.type === 'expense' && (
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              label="Due Date (leave blank if none)"
+              type="date"
+              name="dueDate"
+              value={transaction.dueDate}
+              onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+            />
+          </Grid>
+        )}
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
             Add Transaction
@@ -129,5 +144,6 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
     </form>
   );
 };
+
 
 export default AddTransaction;
