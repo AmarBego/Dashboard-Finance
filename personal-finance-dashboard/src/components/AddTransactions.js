@@ -4,39 +4,38 @@ import {
   Paper, Typography, IconButton, Collapse
 } from '@mui/material';
 import { Add, Remove, AttachMoney, Category, Event, EventAvailable } from '@mui/icons-material';
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
+
+const INITIAL_TRANSACTION = {
+  date: format(new Date(), 'yyyy-MM-dd'),
+  type: 'expense',
+  category: '',
+  amount: '',
+  isPaid: false,
+  dueDate: '',
+};
 
 const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [transaction, setTransaction] = useState({
-    date: format(new Date(), 'yyyy-MM-dd'),
-    type: 'expense',
-    category: '',
-    amount: '',
-    isPaid: false,
-    dueDate: '',
-  });
+  const [transaction, setTransaction] = useState(INITIAL_TRANSACTION);
 
   useEffect(() => {
-    const [year, month] = currentMonth.split('-');
-    const [, , day] = transaction.date.split('-');
-    setTransaction(prev => ({
-      ...prev,
-      date: `${year}-${month}-${day}`
-    }));
-  }, [currentMonth]);
+    if (currentMonth) {
+      const [year, month] = currentMonth.split('-');
+      const [, , day] = transaction.date.split('-');
+      setTransaction(prev => ({
+        ...prev,
+        date: `${year}-${month}-${day}`
+      }));
+    }
+  }, [currentMonth, transaction.date]);
 
   const handleChange = (e) => {
-    let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    if (e.target.name === 'date') {
-      const [inputYear, inputMonth] = value.split('-');
-      if (`${inputYear}-${inputMonth}` !== currentMonth) {
-        const [year, month] = currentMonth.split('-');
-        const [, , day] = value.split('-');
-        value = `${year}-${month}-${day}`;
-      }
-    }
-    setTransaction({ ...transaction, [e.target.name]: value });
+    const { name, value, type, checked } = e.target;
+    setTransaction(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -58,14 +57,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
       if (response.ok) {
         const newTransaction = await response.json();
         onAddTransaction(newTransaction);
-        setTransaction({
-          date: format(new Date(), 'yyyy-MM-dd'),
-          type: 'expense',
-          category: '',
-          amount: '',
-          isPaid: false,
-          dueDate: '',
-        });
+        setTransaction(INITIAL_TRANSACTION);
         setIsExpanded(false);
       } else {
         console.error('Failed to add transaction');
@@ -74,6 +66,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
       console.error('Error adding transaction:', error);
     }
   };
+
   return (
     <Paper 
       elevation={3} 
