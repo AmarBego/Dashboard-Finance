@@ -4,23 +4,20 @@ export function useAuth() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const email = localStorage.getItem('email');
-    if (token && email) {
-      setUser({ email, token });
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
   const handleLogin = (userData) => {
     setUser(userData);
-    localStorage.setItem('token', userData.token);
-    localStorage.setItem('email', userData.email);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    localStorage.removeItem('user');
   };
 
   return { user, handleLogin, handleLogout };
