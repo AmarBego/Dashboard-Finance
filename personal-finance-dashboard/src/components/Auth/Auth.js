@@ -18,7 +18,7 @@ const Auth = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const url = `http://localhost:5000/api/auth/${isLogin ? 'login' : 'register'}`;
+    const url = `${process.env.REACT_APP_API_URL}api/auth/${isLogin ? 'login' : 'register'}`;
     try {
       const response = await fetch(url, {
         method: 'POST',

@@ -43,7 +43,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/transactions', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}api/transactions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
