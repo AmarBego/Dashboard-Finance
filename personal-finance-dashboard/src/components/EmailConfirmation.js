@@ -5,6 +5,7 @@ import { useSnackbar } from 'notistack';
 
 const EmailConfirmation = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { token } = useParams();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -18,10 +19,12 @@ const EmailConfirmation = () => {
         if (response.ok) {
           enqueueSnackbar('Email confirmed successfully. You can now log in.', { variant: 'success' });
         } else {
+          setError(data.msg || 'Confirmation failed. Please try registering again.');
           enqueueSnackbar(data.msg || 'Confirmation failed. Please try registering again.', { variant: 'error' });
         }
       } catch (error) {
         console.error('Error:', error);
+        setError('An error occurred. Please try again.');
         enqueueSnackbar('An error occurred. Please try again.', { variant: 'error' });
       } finally {
         setIsLoading(false);
@@ -36,9 +39,13 @@ const EmailConfirmation = () => {
     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" minHeight="100vh">
       {isLoading ? (
         <CircularProgress />
+      ) : error ? (
+        <Typography variant="h6" color="error">
+          {error}
+        </Typography>
       ) : (
-        <Typography variant="h6">
-          Redirecting to login page...
+        <Typography variant="h6" color="success.main">
+          Email confirmed successfully. Redirecting to login page...
         </Typography>
       )}
     </Box>

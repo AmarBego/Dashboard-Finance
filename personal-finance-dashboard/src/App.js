@@ -24,8 +24,8 @@ function App() {
   <Routes>
     <Route path="/confirm/:token" element={<EmailConfirmation />} />
     <Route path="/login" element={user ? <Navigate to="/" replace /> : <Auth onLogin={handleLogin} />} />
-    {user ? (
-      <Route path="/*" element={
+    <Route path="/*" element={
+      user ? (
         <Layout user={user} onLogout={handleLogout} toggleTheme={toggleTheme} mode={mode}>
           <AppRoutes 
             user={user}
@@ -37,13 +37,13 @@ function App() {
             onLogin={handleLogin}
           />
         </Layout>
-      } />
-    ) : (
-      <Route path="*" element={<Navigate to="/login" replace />} />
-    )}
+      ) : (
+        <Navigate to="/login" replace />
+      )
+    } />
   </Routes>
 </Router>
-      </ThemeProvider>
+   </ThemeProvider>
     </SnackbarProvider>
   );
 }
