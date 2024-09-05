@@ -24,6 +24,7 @@ app.use(cors({
 app.use(express.json());
 app.use(compression());
 app.use(morgan('combined'));
+app.use(express.static(path.join(__dirname, '../personal-finance-dashboard/build')));
 
 // Configure logger
 const logger = winston.createLogger({
@@ -83,4 +84,8 @@ cron.schedule('* * * * *', async () => {
     await User.findByIdAndDelete(user._id);
     logger.info(`Deleted unconfirmed user: ${user.email}`);
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../personal-finance-dashboard/build', 'index.html'));
 });
