@@ -72,3 +72,5 @@
 {"level":"info","message":"Connected to MongoDB","service":"personal-finance-backend"}
 {"level":"info","message":"Server running on port 5000","service":"personal-finance-backend"}
 {"level":"info","message":"Connected to MongoDB","service":"personal-finance-backend"}
+{"level":"info","message":"Server running on port 5000","service":"personal-finance-backend"}
+{"level":"info","message":"Connected to MongoDB","service":"personal-finance-backend"}

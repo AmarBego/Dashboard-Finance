@@ -58,11 +58,6 @@ app.use('/api/transactions', require('./routes/transactions'));
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../personal-finance-dashboard/build')));
 
-// Handle React routing, return all requests to React app
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../personal-finance-dashboard/build', 'index.html'));
-});
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
 
