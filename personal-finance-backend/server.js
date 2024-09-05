@@ -6,37 +6,24 @@ require('dotenv').config();
 const helmet = require('helmet');
 const winston = require('winston');
 const path = require('path');
-const fallback = require('express-history-api-fallback');
+const compression = require('compression');
+const morgan = require('morgan');
 
 const cron = require('node-cron');
 const User = require('./models/User');
 
-// Schedule task to run every minute
-cron.schedule('* * * * *', async () => {
-  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000); // 15 minutes ago
-  const unconfirmedUsers = await User.find({
-    isConfirmed: false,
-    confirmationExpires: { $lt: fifteenMinutesAgo }
-  });
-
-  for (const user of unconfirmedUsers) {
-    await User.findByIdAndDelete(user._id);
-    console.log(`Deleted unconfirmed user: ${user.email}`);
-  }
-});
-
 const app = express();
 
-// Apply helmet middleware early
+// Apply middleware
 app.use(helmet());
-
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token']
 }));
-
 app.use(express.json());
+app.use(compression());
+app.use(morgan('combined'));
 
 // Configure logger
 const logger = winston.createLogger({
@@ -63,15 +50,17 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => logger.info('Connected to MongoDB'))
 .catch((err) => logger.error('MongoDB connection error:', err));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../personal-finance-dashboard/build')));
-
-// Routes
+// API routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/transactions', require('./routes/transactions'));
 
-// Fallback to index.html for any other routes
-app.use(fallback(path.join(__dirname, '../personal-finance-dashboard/build/index.html')));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../personal-finance-dashboard/build')));
+
+// Handle React routing, return all requests to React app
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../personal-finance-dashboard/build', 'index.html'));
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
@@ -80,4 +69,18 @@ app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).send('Something broke!');
+});
+
+// Schedule task to run every minute
+cron.schedule('* * * * *', async () => {
+  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
+  const unconfirmedUsers = await User.find({
+    isConfirmed: false,
+    confirmationExpires: { $lt: fifteenMinutesAgo }
+  });
+
+  for (const user of unconfirmedUsers) {
+    await User.findByIdAndDelete(user._id);
+    logger.info(`Deleted unconfirmed user: ${user.email}`);
+  }
 });
