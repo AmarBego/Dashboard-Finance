@@ -14,10 +14,14 @@ const UserSchema = new mongoose.Schema({
   selectedTheme: {
     type: String,
     default: 'light'
+  },
+  confirmationToken: String,
+  confirmationExpires: Date,
+  isConfirmed: {
+    type: Boolean,
+    default: false
   }
 });
-
-// ... (keep existing methods)
 
 const User = mongoose.model('User', UserSchema);
 

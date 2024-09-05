@@ -26,13 +26,31 @@ export const GreenTab = styled(Tab)({
   },
 });
 
-export const GreenTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '&.Mui-focused fieldset': {
-      borderColor: '#4caf50',
+export const GreenTextField = styled(TextField)(({ theme }) => ({
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#4caf50',
+      },
+      '& fieldset': {
+        borderColor: 'rgba(0, 0, 0, 0.23)',
+      },
+
     },
-  },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: '#4caf50',
-  },
-});
+    '& .MuiInputLabel-root': {
+      color: 'rgba(0, 0, 0, 0.7)',
+      '&.Mui-focused': {
+        color: '#4caf50',
+      },
+    },
+    '& .MuiInputBase-input': {
+      color: 'black',
+      '&:-webkit-autofill': {
+        '-webkit-box-shadow': '0 0 0 100px white inset',
+        '-webkit-text-fill-color': 'black',
+        'caret-color': 'black',
+      },
+    },
+    '& .MuiInputAdornment-root .MuiSvgIcon-root': {
+      color: 'rgba(0, 0, 0, 0.54)',
+    },
+  }));

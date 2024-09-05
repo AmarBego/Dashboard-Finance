@@ -6,6 +6,23 @@ require('dotenv').config();
 const helmet = require('helmet');
 const winston = require('winston');
 
+const cron = require('node-cron');
+const User = require('./models/User');
+
+// Schedule task to run every minute
+cron.schedule('* * * * *', async () => {
+  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000); // 15 minutes ago
+  const unconfirmedUsers = await User.find({
+    isConfirmed: false,
+    confirmationExpires: { $lt: fifteenMinutesAgo }
+  });
+
+  for (const user of unconfirmedUsers) {
+    await User.findByIdAndDelete(user._id);
+    console.log(`Deleted unconfirmed user: ${user.email}`);
+  }
+});
+
 const app = express();
 
 // Apply helmet middleware early

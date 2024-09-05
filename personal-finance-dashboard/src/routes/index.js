@@ -4,8 +4,10 @@ import Dashboard from '../pages/Dashboard';
 import Expenses from '../pages/Expenses';
 import Income from '../pages/Income';
 import Transactions from '../pages/Transactions';
+import EmailConfirmation from '../components/EmailConfirmation';
+import Auth from '../components/Auth/Auth';
 
-const AppRoutes = ({ user, userTransactions, currentMonth, handlePreviousMonth, handleNextMonth, handleAddTransaction, updateTransaction, fetchTransactions, deleteTransaction }) => (
+const AppRoutes = ({ user, userTransactions, currentMonth, handlePreviousMonth, handleNextMonth, handleAddTransaction, updateTransaction, fetchTransactions, deleteTransaction, onLogin }) => (
   <Routes>
     <Route path="/" element={
       <Dashboard 
@@ -22,21 +24,18 @@ const AppRoutes = ({ user, userTransactions, currentMonth, handlePreviousMonth, 
     <Route 
       path="/transactions" 
       element={
-        user ? (
-          <Transactions 
-            userTransactions={userTransactions} 
-            handleAddTransaction={handleAddTransaction}
-            currentMonth={currentMonth}
-            user={user}
-            updateTransaction={updateTransaction}
-            fetchTransactions={fetchTransactions}
-            deleteTransaction={deleteTransaction}
-          />
-        ) : (
-          <Navigate to="/login" replace />
-        )
+        <Transactions 
+          userTransactions={userTransactions} 
+          handleAddTransaction={handleAddTransaction}
+          currentMonth={currentMonth}
+          user={user}
+          updateTransaction={updateTransaction}
+          fetchTransactions={fetchTransactions}
+          deleteTransaction={deleteTransaction}
+        />
       } 
     />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
 );
 
