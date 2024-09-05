@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const helmet = require('helmet');
 const winston = require('winston');
+const path = require('path');
+const fallback = require('express-history-api-fallback');
 
 const cron = require('node-cron');
 const User = require('./models/User');
@@ -61,9 +63,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => logger.info('Connected to MongoDB'))
 .catch((err) => logger.error('MongoDB connection error:', err));
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../personal-finance-dashboard/build')));
+
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/transactions', require('./routes/transactions'));
+
+// Fallback to index.html for any other routes
+app.use(fallback(path.join(__dirname, '../personal-finance-dashboard/build/index.html')));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
