@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Typography, CircularProgress, Box } from '@mui/material';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
 const EmailConfirmation = () => {
-  const [isConfirmed, setIsConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { token } = useParams();
   const navigate = useNavigate();
@@ -13,18 +12,13 @@ const EmailConfirmation = () => {
   useEffect(() => {
     const confirmEmail = async () => {
       try {
-        const confirmUrl = `${process.env.REACT_APP_API_URL}/api/auth/confirm/${token}`;
-        const response = await fetch(confirmUrl);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/confirm/${token}`);
         const data = await response.json();
         
         if (response.ok) {
-          setIsConfirmed(true);
           enqueueSnackbar('Email confirmed successfully. You can now log in.', { variant: 'success' });
         } else {
-          const errorMessage = data.msg === 'Invalid or expired confirmation link' 
-            ? 'Your confirmation link has expired. Please register again. Links are valid for 15 minutes.'
-            : data.msg || 'Confirmation failed. Please try registering again.';
-          enqueueSnackbar(errorMessage, { variant: 'error' });
+          enqueueSnackbar(data.msg || 'Confirmation failed. Please try registering again.', { variant: 'error' });
         }
       } catch (error) {
         console.error('Error:', error);
@@ -43,8 +37,8 @@ const EmailConfirmation = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Typography variant="h6" color={isConfirmed ? 'success.main' : 'error.main'}>
-          {isConfirmed ? 'Email confirmed successfully' : 'Confirmation failed'}
+        <Typography variant="h6">
+          Redirecting to login page...
         </Typography>
       )}
     </Box>
