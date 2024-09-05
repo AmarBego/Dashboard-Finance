@@ -15,6 +15,8 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
   const [editingId, setEditingId] = useState(null);
   const [editedTransaction, setEditedTransaction] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [transactionToDelete, setTransactionToDelete] = useState(null);
 
   const sortedTransactions = useMemo(() => {
     return [...userTransactions].sort((a, b) => {
@@ -76,14 +78,6 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
     }
   };
 
-  const handleDelete = async (transactionId) => {
-    try {
-      await deleteTransaction(transactionId);
-    } catch (error) {
-      console.error('Error deleting transaction:', error);
-    }
-  };
-
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   };
@@ -92,9 +86,53 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
     return transaction.type === 'expense' && transaction.dueDate && !transaction.isPaid;
   };
 
+  const onAddTransaction = async (newTransaction) => {
+    try {
+      await handleAddTransaction(newTransaction);
+      await fetchTransactions();
+    } catch (error) {
+      console.error('Error adding new transaction:', error);
+    }
+  };
+
+  const handleDelete = async (transactionId) => {
+    try {
+      await deleteTransaction(transactionId);
+    } catch (error) {
+      console.error('Error deleting transaction:', error);
+    }
+  };
+
+  const handleDeleteClick = (transaction) => {
+    setTransactionToDelete(transaction);
+    setIsDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (transactionToDelete) {
+      try {
+        await deleteTransaction(transactionToDelete._id);
+        await fetchTransactions();
+      } catch (error) {
+        console.error('Error deleting transaction:', error);
+      }
+    }
+    setIsDeleteDialogOpen(false);
+    setTransactionToDelete(null);
+  };
+
+  const handleDeleteCancel = () => {
+    setIsDeleteDialogOpen(false);
+    setTransactionToDelete(null);
+  };
+
   return (
     <Paper elevation={3} sx={{ p: 2 }}>
-      <AddTransaction handleAddTransaction={handleAddTransaction} currentMonth={currentMonth} user={user} />
+      <AddTransaction 
+        onAddTransaction={onAddTransaction} 
+        currentMonth={currentMonth} 
+        user={user} 
+      />
       <List>
         {sortedTransactions.map((transaction) => (
           <ListItem 
@@ -157,14 +195,14 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
               <Button variant="outlined" size="small" onClick={() => handleEdit(transaction)}>
                 Edit
               </Button>
-              <IconButton onClick={() => handleDelete(transaction._id)} color="error" size="small">
+              <IconButton onClick={() => handleDeleteClick(transaction)} color="error" size="small">
                 <DeleteIcon />
               </IconButton>
             </Box>
           </ListItem>
         ))}
       </List>
-
+  
       <Dialog 
         open={isEditDialogOpen} 
         onClose={handleCancel}
@@ -241,6 +279,26 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
         <DialogActions>
           <Button onClick={handleCancel}>Cancel</Button>
           <Button onClick={handleSave} variant="contained">Save</Button>
+        </DialogActions>
+      </Dialog>
+  
+      <Dialog
+        open={isDeleteDialogOpen}
+        onClose={handleDeleteCancel}
+        aria-labelledby="delete-dialog-title"
+        aria-describedby="delete-dialog-description"
+      >
+        <DialogTitle id="delete-dialog-title">Confirm Deletion</DialogTitle>
+        <DialogContent>
+          <Typography id="delete-dialog-description">
+            Are you sure you want to delete this transaction? This action cannot be undone.
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteCancel}>Cancel</Button>
+          <Button onClick={handleDeleteConfirm} color="error" autoFocus>
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </Paper>

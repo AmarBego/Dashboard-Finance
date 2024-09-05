@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Grid, MenuItem, FormControlLabel, Checkbox } from '@mui/material';
+import { 
+  Box, TextField, Button, Select, MenuItem, InputAdornment,
+  Paper, Typography, IconButton, Collapse
+} from '@mui/material';
+import { Add, Remove, AttachMoney, Category, Event, EventAvailable } from '@mui/icons-material';
 import { format, parseISO } from 'date-fns';
 
-const AddTransaction = ({ onAddTransaction, currentMonth }) => {
+const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [transaction, setTransaction] = useState({
     date: format(new Date(), 'yyyy-MM-dd'),
     type: 'expense',
@@ -22,7 +27,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
   }, [currentMonth]);
 
   const handleChange = (e) => {
-    let value = e.target.value;
+    let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     if (e.target.name === 'date') {
       const [inputYear, inputMonth] = value.split('-');
       if (`${inputYear}-${inputMonth}` !== currentMonth) {
@@ -61,6 +66,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
           isPaid: false,
           dueDate: '',
         });
+        setIsExpanded(false);
       } else {
         console.error('Failed to add transaction');
       }
@@ -69,81 +75,123 @@ const AddTransaction = ({ onAddTransaction, currentMonth }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+    <Paper 
+      elevation={3} 
+      sx={{ 
+        mb: 3, 
+        overflow: 'hidden', 
+        background: 'rgba(255, 255, 255, 0.05)',
+        backdropFilter: 'blur(10px)',
+      }}
+    >
+      <Box 
+        onClick={() => setIsExpanded(!isExpanded)}
+        sx={{ 
+          p: 2, 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          cursor: 'pointer',
+          '&:hover': {
+            bgcolor: 'rgba(255, 255, 255, 0.1)',
+          },
+          transition: 'background-color 0.2s',
+        }}
+      >
+        <Typography variant="h6">Add New Transaction</Typography>
+        <IconButton>
+          {isExpanded ? <Remove /> : <Add />}
+        </IconButton>
+      </Box>
+      <Collapse in={isExpanded}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ p: 2, display: 'grid', gap: 2, gridTemplateColumns: 'repeat(2, 1fr)' }}>
           <TextField
-            fullWidth
+            name="date"
             label="Date"
             type="date"
-            name="date"
             value={transaction.date}
             onChange={handleChange}
-            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Event />
+                </InputAdornment>
+              ),
+            }}
             inputProps={{
               min: `${currentMonth}-01`,
               max: `${currentMonth}-31`
             }}
+            fullWidth
             required
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            select
-            label="Type"
+          <Select
             name="type"
             value={transaction.type}
             onChange={handleChange}
-            required
-          >
-            <MenuItem value="income">Income</MenuItem>
-            <MenuItem value="expense">Expense</MenuItem>
-          </TextField>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
             fullWidth
-            label="Category"
+            required
+            startAdornment={<InputAdornment position="start"><Category /></InputAdornment>}
+          >
+            <MenuItem value="expense">Expense</MenuItem>
+            <MenuItem value="income">Income</MenuItem>
+          </Select>
+          <TextField
             name="category"
+            label="Category"
             value={transaction.category}
             onChange={handleChange}
+            fullWidth
             required
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
           <TextField
-            fullWidth
+            name="amount"
             label="Amount"
             type="number"
-            name="amount"
             value={transaction.amount}
             onChange={handleChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AttachMoney />
+                </InputAdornment>
+              ),
+            }}
+            fullWidth
             required
           />
-        </Grid>
-        {transaction.type === 'expense' && (
-          <Grid item xs={12} sm={6}>
+          {transaction.type === 'expense' && (
             <TextField
-              fullWidth
-              label="Due Date (leave blank if none)"
-              type="date"
               name="dueDate"
+              label="Due Date (optional)"
+              type="date"
               value={transaction.dueDate}
               onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EventAvailable />
+                  </InputAdornment>
+                ),
+              }}
+              fullWidth
             />
-          </Grid>
-        )}
-        <Grid item xs={12}>
-          <Button type="submit" variant="contained" color="primary">
+          )}
+          <Button 
+            type="submit" 
+            variant="contained" 
+            fullWidth 
+            sx={{ 
+              gridColumn: '1 / -1', 
+              mt: 2,
+            }}
+          >
             Add Transaction
           </Button>
-        </Grid>
-      </Grid>
-    </form>
+        </Box>
+      </Collapse>
+    </Paper>
   );
 };
-
 
 export default AddTransaction;

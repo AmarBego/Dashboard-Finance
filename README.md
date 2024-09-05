@@ -11,14 +11,20 @@ This Personal Finance Dashboard allows users to track their income and expenses,
 ## Key Features
 
 - User authentication (register, login, logout)
-- Add, edit, and delete transactions
+- Add, edit, and delete transactions with confirmation
 - Categorize transactions as income or expense
-- View recent transactions
+- View recent transactions with due date highlighting
 - Visualize expenses by category (pie chart)
 - Compare income vs expenses (bar chart)
-- Monthly budget overview
+- Monthly budget overview with due payments calculation
 - Responsive design for mobile and desktop
 - **Light and Dark Mode**: Easily switch between light and dark themes for comfortable viewing in any environment
+- **Transaction Management**:
+  - Add new transactions with an intuitive, collapsible form
+  - Edit existing transactions with a modal dialog
+  - Delete transactions with a confirmation dialog to prevent accidental deletions
+- **Due Payments**: Highlight and track expenses with due dates
+- **Paid Status**: Mark expenses as paid and track payment status
 
 ## Project Structure
 
