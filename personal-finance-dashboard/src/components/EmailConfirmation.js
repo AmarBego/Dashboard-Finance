@@ -18,6 +18,7 @@ const EmailConfirmation = () => {
         
         if (response.ok) {
           enqueueSnackbar('Email confirmed successfully. You can now log in.', { variant: 'success' });
+          setTimeout(() => navigate('/login'), 3000);
         } else {
           setError(data.msg || 'Confirmation failed. Please try registering again.');
           enqueueSnackbar(data.msg || 'Confirmation failed. Please try registering again.', { variant: 'error' });
@@ -28,7 +29,6 @@ const EmailConfirmation = () => {
         enqueueSnackbar('An error occurred. Please try again.', { variant: 'error' });
       } finally {
         setIsLoading(false);
-        setTimeout(() => navigate('/login'), 3000);
       }
     };
   
