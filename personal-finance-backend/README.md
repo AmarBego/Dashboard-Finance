@@ -21,12 +21,22 @@ This is the backend API for the Personal Finance Dashboard application.
    ```
 
 3. Create a `.env` file in the backend root directory with the following content:
-   ```
+   ```bash
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/personal_finance
    JWT_SECRET=your_jwt_secret_here
+   FRONTEND_URL=http://localhost:3000
    ```
    Replace `your_jwt_secret_here` with a secure random string.
+
+## Security Features
+
+- CORS: Configured with specific origin, methods, and allowed headers
+- Helmet: Implemented for improved HTTP security headers
+- Winston Logger: Integrated for better error tracking and debugging
+- Password Hashing: Secure password hashing using bcrypt
+- JWT Authentication: JSON Web Tokens for secure user authentication
+- Environment Variables: Sensitive information stored in .env file
 
 ## Running the Application
 

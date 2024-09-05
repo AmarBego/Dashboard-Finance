@@ -1,12 +1,12 @@
 # Personal Finance Dashboard
 
-A full-stack web application for managing personal finances, built with React, Node.js, Express, and MongoDB.
+An open-source, customizable full-stack web application for managing personal finances, built with React, Node.js, Express, and MongoDB.
 
 ![Dashboard Preview](./dashboard-preview.png)
 
 ## Project Overview
 
-This Personal Finance Dashboard allows users to track their income and expenses, visualize spending patterns, and manage their budget effectively. The application features user authentication, transaction management, and various charts for financial analysis.
+This Personal Finance Dashboard serves as a foundation for developers to quickly set up a secure, feature-rich financial management application. It's designed to be easily customizable and extendable, allowing you to learn from a well-structured application, quickly prototype your own financial tools, and modify functionality to suit your specific needs.
 
 ## Key Features
 
@@ -61,10 +61,19 @@ The application supports both light and dark modes, providing a comfortable view
 
 ![Light Mode](./light-mode.png) ![Dark Mode](./dark-mode.png)
 
+## Customization
+
+Feel free to modify any part of this application to suit your needs. Some ideas:
+
+- Add new API endpoints for additional features
+- Integrate with different databases or services
+- Implement more advanced authentication methods
+- Add data analysis or reporting features
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This project is open-source and available under the MIT License. See the [LICENSE](./LICENSE) file for details.
