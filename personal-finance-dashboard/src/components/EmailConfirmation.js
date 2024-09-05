@@ -13,7 +13,8 @@ const EmailConfirmation = () => {
   useEffect(() => {
     const confirmEmail = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/confirm/${token}`);
+        const confirmUrl = `${process.env.REACT_APP_API_URL}/api/auth/confirm/${token}`;
+        const response = await fetch(confirmUrl);
         const data = await response.json();
         
         if (response.ok) {
