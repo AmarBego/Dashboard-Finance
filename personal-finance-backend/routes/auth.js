@@ -3,12 +3,20 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { body, validationResult } = require('express-validator');
 
-// Register a new user
-router.post('/register', async (req, res) => {
+router.post('/register', [
+  body('email').isEmail().withMessage('Please enter a valid email'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ msg: errors.array()[0].msg });
+  }
+
   try {
     const { email, password } = req.body;
-
+    
     // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
@@ -41,12 +49,12 @@ router.post('/register', async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ token, email: user.email });
       }
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ msg: 'Server error' });
   }
 });
 

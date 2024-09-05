@@ -9,7 +9,7 @@ import RecentTransactions from '../components/RecentTransactions';
 import BudgetOverview from '../components/BudgetOverview';
 import { format, parseISO, addMonths, subMonths } from 'date-fns';
 
-const MotionPaper = motion(Paper);
+const MotionPaper = motion.create(Paper);
 
 const Dashboard = ({ userTransactions, user }) => {
     const [currentMonth, setCurrentMonth] = useState(format(new Date(), 'yyyy-MM'));

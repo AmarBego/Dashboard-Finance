@@ -28,6 +28,16 @@ const BudgetOverview = ({ transactions }) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   };
 
+  const tooltipContent = (
+    <Box>
+      {duePayments.map((p, index) => (
+        <Typography key={index} variant="body2">
+          {p.category}: {formatCurrency(p.amount)} (Due: {format(parseISO(p.dueDate), 'MMM d')})
+        </Typography>
+      ))}
+    </Box>
+  );
+  
   return (
     <Box>
       <Typography variant="h6" gutterBottom>Budget Overview</Typography>
@@ -72,7 +82,7 @@ const BudgetOverview = ({ transactions }) => {
         <Box mt={2}>
           <Typography variant="subtitle2" gutterBottom display="flex" alignItems="center">
             Upcoming Due Payments
-            <Tooltip title={duePayments.map(p => `${p.category}: ${formatCurrency(p.amount)} (Due: ${format(parseISO(p.dueDate), 'MMM d')})`).join('\n')} arrow>
+            <Tooltip title={tooltipContent} arrow>
               <InfoOutlinedIcon fontSize="small" sx={{ ml: 1 }} />
             </Tooltip>
           </Typography>

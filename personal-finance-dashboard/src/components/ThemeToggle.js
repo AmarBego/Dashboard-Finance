@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Switch, styled } from '@mui/material';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const ThemeSwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -51,12 +50,20 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const ThemeToggle = ({ mode, toggleTheme }) => {
+const ThemeToggle = ({ mode, toggleTheme, ...props }) => {
+  // Remove the 'button' prop if it exists
+  const { button, ...restProps } = props;
+
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <ThemeSwitch checked={mode === 'dark'} onChange={toggleTheme} />
+      <ThemeSwitch 
+        checked={mode === 'dark'} 
+        onChange={toggleTheme}
+        {...restProps}  // Spread the remaining props
+      />
     </Box>
   );
 };
+
 
 export default ThemeToggle;

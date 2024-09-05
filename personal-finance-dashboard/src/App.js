@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Paper, Typography, Button, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, IconButton } from '@mui/material';
+import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import { styled, ThemeProvider } from '@mui/material/styles';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 import { format, addMonths, subMonths, parseISO } from 'date-fns';
-import { motion } from 'framer-motion';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
-import ExpenseChart from './components/ExpenseChart';
-import IncomeVsExpense from './components/IncomeVsExpense';
-import RecentTransactions from './components/RecentTransactions';
-import BudgetOverview from './components/BudgetOverview';
-import AddTransaction from './components/AddTransactions';
 import Header from './components/Header';
 import Auth from './components/Auth';
 
@@ -70,11 +63,11 @@ function SidebarContent({ toggleTheme, mode }) {
       <List sx={{ flexGrow: 1 }}>
         {menuItems.map((item) => (
           <StyledListItem
-            button
             key={item.text}
             component={Link}
             to={item.path}
             active={location.pathname === item.path ? 1 : 0}
+            sx={{ '&:hover': { cursor: 'pointer' } }}
           >
             <ListItemIcon sx={{ color: 'inherit' }}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} primaryTypographyProps={{ color: 'inherit' }} />
@@ -151,7 +144,7 @@ function App() {
       setUserTransactions([]);
     }
   };
-
+  
   const deleteTransaction = async (transactionId) => {
     try {
       const response = await fetch(`http://localhost:5000/api/transactions/${transactionId}`, {
@@ -192,7 +185,6 @@ function App() {
   const handlePreviousMonth = () => {
     setCurrentMonth(format(subMonths(parseISO(`${currentMonth}-01`), 1), 'yyyy-MM'));
   };
-
   const handleNextMonth = () => {
     setCurrentMonth(format(addMonths(parseISO(`${currentMonth}-01`), 1), 'yyyy-MM'));
   };
@@ -221,9 +213,10 @@ function App() {
     }
   };
   
-  const filteredTransactions = Array.isArray(userTransactions) 
-    ? userTransactions.filter(transaction => transaction.date.startsWith(currentMonth))
-    : [];
+// eslint-disable-next-line no-unused-vars
+const filteredTransactions = Array.isArray(userTransactions) 
+  ? userTransactions.filter(transaction => transaction.date.startsWith(currentMonth))
+  : [];
 
   if (!user) {
     return <Auth onLogin={handleLogin} />;
