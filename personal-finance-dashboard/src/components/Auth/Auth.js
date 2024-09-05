@@ -1,49 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  TextField, Button, Typography, Box, Paper, Tab, Tabs, 
-  Grid, IconButton, InputAdornment
+  Typography, Box, Grid, IconButton, InputAdornment 
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  background: 'rgba(255, 255, 255, 0.05)',
-  backdropFilter: 'blur(10px)',
-}));
-
-const GreenButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#4caf50',
-  '&:hover': {
-    backgroundColor: '#45a049',
-  },
-}));
-
-const GreenTabs = styled(Tabs)({
-  '& .MuiTabs-indicator': {
-    backgroundColor: '#4caf50',
-  },
-});
-
-const GreenTab = styled(Tab)({
-  '&.Mui-selected': {
-    color: '#4caf50',
-  },
-});
-
-const GreenTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '&.Mui-focused fieldset': {
-      borderColor: '#4caf50',
-    },
-  },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: '#4caf50',
-  },
-});
+import { StyledPaper, GreenButton, GreenTabs, GreenTab, GreenTextField } from './styles';
 
 const Auth = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -100,7 +63,7 @@ const Auth = ({ onLogin }) => {
               {error}
             </Typography>
           )}
-         <Box component="form" onSubmit={handleSubmit}>
+          <Box component="form" onSubmit={handleSubmit}>
             <GreenTextField
               fullWidth
               label="Email"

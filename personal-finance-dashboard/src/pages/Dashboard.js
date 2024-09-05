@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpenseChart from '../components/ExpenseChart';
-import IncomeVsExpense from '../components/IncomeVsExpense';
+import IncomeVsExpense from '../components/IncomeVsExpense/IncomeVsExpense';
 import RecentTransactions from '../components/RecentTransactions';
 import BudgetOverview from '../components/BudgetOverview';
 import { format, parseISO } from 'date-fns';

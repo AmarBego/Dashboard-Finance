@@ -4,7 +4,7 @@ import {
   Dialog, DialogTitle, DialogContent, DialogActions, Backdrop, Chip,
   FormControlLabel, Checkbox, IconButton
 } from '@mui/material';
-import AddTransaction from '../components/AddTransactions';
+import AddTransaction from '../components/AddTransactions/AddTransactions';
 import { format, parseISO } from 'date-fns';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -12,7 +12,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, user, updateTransaction, fetchTransactions, deleteTransaction }) => {
-  const [editingId, setEditingId] = useState(null);
+  const [setEditingId] = useState(null);
   const [editedTransaction, setEditedTransaction] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -92,14 +92,6 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
       await fetchTransactions();
     } catch (error) {
       console.error('Error adding new transaction:', error);
-    }
-  };
-
-  const handleDelete = async (transactionId) => {
-    try {
-      await deleteTransaction(transactionId);
-    } catch (error) {
-      console.error('Error deleting transaction:', error);
     }
   };
 

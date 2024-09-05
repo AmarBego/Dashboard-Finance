@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import { Add, Remove, AttachMoney, Category, Event, EventAvailable } from '@mui/icons-material';
 import { format } from 'date-fns';
+import { paperStyle, boxStyle, formStyle, buttonStyle } from './styles';  // Import the styles
 
 const INITIAL_TRANSACTION = {
   date: format(new Date(), 'yyyy-MM-dd'),
@@ -68,28 +69,10 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
   };
 
   return (
-    <Paper 
-      elevation={3} 
-      sx={{ 
-        mb: 3, 
-        overflow: 'hidden', 
-        background: 'rgba(255, 255, 255, 0.05)',
-        backdropFilter: 'blur(10px)',
-      }}
-    >
+    <Paper elevation={3} sx={paperStyle}>
       <Box 
         onClick={() => setIsExpanded(!isExpanded)}
-        sx={{ 
-          p: 2, 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between', 
-          cursor: 'pointer',
-          '&:hover': {
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-          },
-          transition: 'background-color 0.2s',
-        }}
+        sx={boxStyle}
       >
         <Typography variant="h6">Add New Transaction</Typography>
         <IconButton>
@@ -97,7 +80,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
         </IconButton>
       </Box>
       <Collapse in={isExpanded}>
-        <Box component="form" onSubmit={handleSubmit} sx={{ p: 2, display: 'grid', gap: 2, gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <Box component="form" onSubmit={handleSubmit} sx={formStyle}>
           <TextField
             name="date"
             label="Date"
@@ -174,10 +157,7 @@ const AddTransaction = ({ onAddTransaction, currentMonth, user }) => {
             type="submit" 
             variant="contained" 
             fullWidth 
-            sx={{ 
-              gridColumn: '1 / -1', 
-              mt: 2,
-            }}
+            sx={buttonStyle}
           >
             Add Transaction
           </Button>

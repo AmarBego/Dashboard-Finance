@@ -2,6 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from '@mui/material/styles';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { getChartOptions } from './chartStyles';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -27,43 +28,7 @@ const IncomeVsExpense = ({ transactions }) => {
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          callback: (value) => `$${value}`,
-          color: theme.palette.text.primary,
-        },
-        grid: {
-          color: theme.palette.divider,
-        }
-      },
-      x: {
-        ticks: {
-          color: theme.palette.text.primary,
-        },
-        grid: {
-          display: false
-        }
-      }
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: false,
-      },
-      tooltip: {
-        callbacks: {
-          label: (context) => `$${context.formattedValue}`
-        }
-      }
-    },
-  };
+  const options = getChartOptions(theme);
 
   return (
     <div style={{ height: '100%', width: '100%' }}>

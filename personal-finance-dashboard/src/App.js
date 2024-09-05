@@ -4,8 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { useTransactions } from './hooks/useTransactions';
 import { useTheme } from './hooks/useTheme';
-import GlobalStyle from './styles/globalStyles';
-import Auth from './components/Auth';
+import GlobalStyle from './styles/global';
+import Auth from './components/Auth/Auth';
 import Layout from './components/Layout';
 import AppRoutes from './routes';
 
