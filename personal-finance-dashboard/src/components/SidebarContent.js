@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useLocation, Link } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -7,6 +7,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const StyledListItem = styled(ListItem)(({ theme, active }) => ({
   color: active ? theme.palette.primary.main : theme.palette.text.primary,
@@ -28,7 +29,7 @@ export function SidebarContent({ toggleTheme, mode }) {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <List sx={{ flexGrow: 1 }}>
+      <List>
         {menuItems.map((item) => (
           <StyledListItem
             key={item.text}
@@ -42,7 +43,23 @@ export function SidebarContent({ toggleTheme, mode }) {
           </StyledListItem>
         ))}
       </List>
-      <Box sx={{ p: 2, display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ mt: 'auto', p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box 
+          component={Link}
+          to="https://github.com/AmarBego/React-Personal-Finance"
+          target="_blank"
+          sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            textDecoration: 'none', 
+            color: 'text.secondary',
+            '&:hover': { color: 'primary.main' }
+          }}
+        >
+          <GitHubIcon sx={{ fontSize: 24 }} />
+          <Typography variant="caption">Open Source</Typography>
+        </Box>
         <ThemeToggle mode={mode} toggleTheme={toggleTheme} />
       </Box>
     </Box>
