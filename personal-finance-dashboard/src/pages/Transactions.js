@@ -12,7 +12,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, user, updateTransaction, fetchTransactions, deleteTransaction }) => {
-  const [setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [editedTransaction, setEditedTransaction] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
