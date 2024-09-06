@@ -12,7 +12,7 @@ import AppRoutes from './routes';
 function App() {
   const { user, handleLogin, handleLogout } = useAuth();
   const { userTransactions, handleAddTransaction, updateTransaction, deleteTransaction, fetchTransactions } = useTransactions(user);
-  const { mode, toggleTheme, theme } = useTheme();
+  const { mode, toggleTheme, theme } = useTheme(user);
 
   if (!user) {
     return <Auth onLogin={handleLogin} />;
