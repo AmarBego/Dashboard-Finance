@@ -52,7 +52,11 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
   };
 
   const handleSave = async () => {
-    await updateTransaction(editedTransaction);
+    const updatedTransactionData = {
+      ...editedTransaction,
+      isPaid: editedTransaction.dueDate ? (editedTransaction.isPaid || false) : null
+    };
+    await updateTransaction(updatedTransactionData);
     setIsEditDialogOpen(false);
     setEditingId(null);
     fetchTransactions();
@@ -67,8 +71,7 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
   const handlePaidToggle = async (transaction) => {
     const updatedTransaction = {
       ...transaction,
-      isPaid: !transaction.isPaid,
-      dueDate: !transaction.isPaid ? null : transaction.dueDate,
+      isPaid: transaction.dueDate ? !transaction.isPaid : null,
     };
     try {
       await updateTransaction(updatedTransaction);

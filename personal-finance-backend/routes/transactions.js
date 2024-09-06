@@ -25,7 +25,7 @@ router.post('/', auth, async (req, res) => {
       type,
       category,
       amount,
-      isPaid,
+      isPaid: dueDate ? (isPaid || false) : null,
       dueDate,
     });
 
@@ -42,8 +42,14 @@ router.put('/:id', auth, async (req, res) => {
   try {
     const { date, type, category, amount, isPaid, dueDate } = req.body;
 
-    let transactionFields = { date, type, category, amount, isPaid };
-    if (dueDate) transactionFields.dueDate = dueDate;
+    let transactionFields = { 
+      date, 
+      type, 
+      category, 
+      amount, 
+      dueDate,
+      isPaid: dueDate ? (isPaid || false) : null
+    };
 
     let transaction = await Transaction.findById(req.params.id);
 

@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const helmet = require('helmet');
 const winston = require('winston');
+const updateLastActive = require('./middleware/updateLastActive');
 
 const app = express();
 
@@ -46,9 +47,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/transactions', require('./routes/transactions'));
-app.use('/api/users', require('./routes/users'));
-
+app.use('/api/transactions', require('./middleware/verifyToken'), updateLastActive, require('./routes/transactions'));
+app.use('/api/users', require('./middleware/verifyToken'), updateLastActive, require('./routes/users'));
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
