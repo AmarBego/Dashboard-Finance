@@ -38,10 +38,6 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
       ...transaction,
       date: transaction.date ? transaction.date.split('T')[0] : '',
       dueDate: transaction.dueDate ? transaction.dueDate.split('T')[0] : '',
-      amount: transaction.amount || '',
-      category: transaction.category || '',
-      type: transaction.type || '',
-      isPaid: transaction.isPaid || false,
     });
     setIsEditDialogOpen(true);
   };

@@ -94,6 +94,10 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
+    const now = new Date();
+    now.setSeconds(0, 0);
+    user.lastActive = now;
+    await user.save();
     const payload = {
       user: {
         id: user.id,

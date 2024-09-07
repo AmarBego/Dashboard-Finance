@@ -13,14 +13,11 @@ export function useAuth() {
   }, []);
 
   const handleLogin = (userData) => {
-    const userToSet = {
-      ...userData,
-      username: userData.username || 'User'
-    };
-    setUser(userToSet);
+    userData.username = userData.username || 'User';
+    setUser(userData);
     localStorage.setItem('token', userData.token);
     localStorage.setItem('email', userData.email);
-    localStorage.setItem('username', userToSet.username);
+    localStorage.setItem('username', userData.username);
   };
 
   const handleLogout = () => {

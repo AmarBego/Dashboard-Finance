@@ -1,15 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const http = require('http');
 require('dotenv').config();
 
 const helmet = require('helmet');
-const winston = require('winston');
+const logger = require('./logger');
 const updateLastActive = require('./middleware/updateLastActive');
+const { initializeWebSocket } = require('./websocket');
 
 const app = express();
+const server = http.createServer(app);
 
-// Apply helmet middleware early
+// Initialize WebSocket
+initializeWebSocket(server);
+
 app.use(helmet());
 
 app.use(cors({
@@ -20,30 +25,18 @@ app.use(cors({
 
 app.use(express.json());
 
-// Configure logger
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'personal-finance-backend' },
-  transports: [
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
-});
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple()
-  }));
-}
-
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => logger.info('Connected to MongoDB'))
-.catch((err) => logger.error('MongoDB connection error:', err));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    logger.info('Connected to MongoDB');
+  } catch (err) {
+    logger.error('MongoDB connection error:', err);
+  }
+}
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -51,7 +44,10 @@ app.use('/api/transactions', require('./middleware/verifyToken'), updateLastActi
 app.use('/api/users', require('./middleware/verifyToken'), updateLastActive, require('./routes/users'));
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
+server.listen(PORT, async () => {
+  await connectToDatabase();
+  logger.info(`Server running on port ${PORT}`);
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

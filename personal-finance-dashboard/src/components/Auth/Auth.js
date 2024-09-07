@@ -46,30 +46,32 @@ const Auth = ({ onLogin }) => {
   };
 
   const checkUsername = async (username) => {
-    if (username.length >= 3 && username.length <= 20) {
-      if (!/^[a-zA-Z0-9-]+$/.test(username)) {
-        setUsernameError('Username can only contain letters, numbers, and hyphens');
-        return;
-      }
-      try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/check-username`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username }),
-        });
-        const data = await response.json();
-        if (data.exists) {
-          setUsernameError('Username is already taken');
-        } else {
-          setUsernameError('');
-        }
-      } catch (error) {
-        console.error('Error checking username:', error);
-      }
-    } else if (username.length > 20) {
+    if (username.length < 3) {
+      setUsernameError('Username must be at least 3 characters long');
+      return;
+    }
+    if (username.length > 20) {
       setUsernameError('Username must be 20 characters or less');
-    } else {
-      setUsernameError('');
+      return;
+    }
+    if (!/^[a-zA-Z0-9-]+$/.test(username)) {
+      setUsernameError('Username can only contain letters, numbers, and hyphens');
+      return;
+    }
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/check-username`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username }),
+      });
+      const data = await response.json();
+      if (data.exists) {
+        setUsernameError('Username is already taken');
+      } else {
+        setUsernameError('');
+      }
+    } catch (error) {
+      console.error('Error checking username:', error);
     }
   };
   return (
@@ -99,10 +101,7 @@ const Auth = ({ onLogin }) => {
                 fullWidth
                 label="Username"
                 value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  checkUsername(e.target.value);
-                }}
+                onChange={(e) => setUsername(e.target.value)}
                 margin="normal"
                 required
                 error={!!usernameError}

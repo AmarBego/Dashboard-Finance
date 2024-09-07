@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/verifyToken');
 const Transaction = require('../models/Transaction');
+const { broadcast } = require('../websocket');
+const logger = require('../logger');  // Assuming you have a centralized logger
 
 // Get all transactions for a user
 router.get('/', auth, async (req, res) => {
@@ -9,7 +11,7 @@ router.get('/', auth, async (req, res) => {
     const transactions = await Transaction.find({ userId: req.user.id }).sort({ date: -1 });
     res.json(transactions);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in GET /api/transactions:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -30,9 +32,15 @@ router.post('/', auth, async (req, res) => {
     });
 
     const transaction = await newTransaction.save();
+    
+    // Broadcast the new transaction
+    logger.info('About to broadcast new transaction');
+    broadcast({ type: 'newTransaction', transaction });
+    logger.info('Broadcast completed');
+    
     res.json(transaction);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in POST /api/transactions:', err);
     res.status(500).send('Server error');
   }
 });
@@ -66,9 +74,14 @@ router.put('/:id', auth, async (req, res) => {
       { new: true }
     );
 
+    // Broadcast the updated transaction
+    logger.info('About to broadcast updated transaction');
+    broadcast({ type: 'updateTransaction', transaction });
+    logger.info('Broadcast completed');
+
     res.json(transaction);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in PUT /api/transactions/:id:', err);
     res.status(500).send('Server Error');
   }
 });
@@ -88,9 +101,15 @@ router.delete('/:id', auth, async (req, res) => {
     }
 
     await Transaction.findByIdAndDelete(req.params.id);
+
+    // Broadcast the deleted transaction
+    logger.info('About to broadcast deleted transaction');
+    broadcast({ type: 'deleteTransaction', transactionId: req.params.id });
+    logger.info('Broadcast completed');
+
     res.json({ msg: 'Transaction removed' });
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in DELETE /api/transactions/:id:', err);
     res.status(500).send('Server error');
   }
 });
