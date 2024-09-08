@@ -1,16 +1,33 @@
 const WebSocket = require('ws');
 const logger = require('./logger');
+const axios = require('axios');
 
 let wss;
 
-function initializeWebSocket(server) {
+function initializeWebSocket(server, db) {
   wss = new WebSocket.Server({ server });
 
   wss.on('connection', (ws) => {
     logger.info('New WebSocket client connected');
     
-    ws.on('message', (message) => {
+    ws.on('message', async (message) => {
       logger.info('Received message:', message);
+      try {
+        const data = JSON.parse(message);
+        if (data.type === 'newTransaction') {
+          const newTransaction = await db.collection('transactions').insertOne(data.transaction);
+          const transaction = await db.collection('transactions').findOne({ _id: newTransaction.insertedId });
+          
+          // Broadcast the new transaction to all clients
+          await broadcastToAPI({ type: 'newTransaction', transaction });
+          
+          // Send confirmation back to the sender
+          ws.send(JSON.stringify({ type: 'transactionConfirmation', transaction }));
+        }
+      } catch (error) {
+        logger.error('Error processing WebSocket message:', error);
+        ws.send(JSON.stringify({ type: 'error', message: 'Error processing transaction' }));
+      }
     });
 
     ws.on('close', () => {
@@ -21,27 +38,12 @@ function initializeWebSocket(server) {
   logger.info('WebSocket server initialized');
 }
 
-function broadcast(data) {
-    logger.info('Entering broadcast function');
-    logger.info(`Number of WebSocket clients: ${wss ? wss.clients.size : 0}`);
-    if (wss) {
-        wss.clients.forEach((client) => {
-            logger.info('Client readyState:', client.readyState);
-            if (client.readyState === WebSocket.OPEN) {
-                try {
-                    client.send(JSON.stringify(data));
-                    logger.info('Data sent to client');
-                } catch (error) {
-                    logger.error('Error sending data to client:', error);
-                }
-            } else {
-                logger.info('Client is not open for broadcasting');
-            }
-        });
-    } else {
-        logger.warn('WebSocket server not initialized');
-    }
-    logger.info('Exiting broadcast function');
+async function broadcastToAPI(data) {
+  try {
+    await axios.post(`${process.env.API_URL}/api/broadcast`, data);
+  } catch (error) {
+    logger.error('Error sending broadcast to API server:', error);
+  }
 }
 
-module.exports = { initializeWebSocket, broadcast };
+module.exports = { initializeWebSocket, broadcastToAPI };

@@ -982,3 +982,1390 @@
 2024-09-07T00:01:16.190Z [info] : New WebSocket client connected 
 2024-09-07T00:01:16.204Z [info] : New WebSocket client connected 
 2024-09-07T00:01:16.220Z [info] : WebSocket client disconnected 
+2024-09-07T00:01:24.967Z [info] : WebSocket server initialized 
+2024-09-07T00:01:25.125Z [info] : Connected to MongoDB 
+2024-09-07T00:01:25.125Z [info] : Server running on port 5000 
+2024-09-07T00:01:34.398Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:01:34.398Z [info] : Entering broadcast function 
+2024-09-07T00:01:34.399Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:01:34.399Z [info] : Exiting broadcast function 
+2024-09-07T00:01:34.399Z [info] : Broadcast completed 
+2024-09-07T00:01:40.141Z [info] : New WebSocket client connected 
+2024-09-07T00:01:40.152Z [info] : New WebSocket client connected 
+2024-09-07T00:01:40.166Z [info] : WebSocket client disconnected 
+2024-09-07T00:01:44.242Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:01:44.242Z [info] : Entering broadcast function 
+2024-09-07T00:01:44.243Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:01:44.243Z [info] : Client readyState: 
+2024-09-07T00:01:44.244Z [info] : Data sent to client 
+2024-09-07T00:01:44.244Z [info] : Exiting broadcast function 
+2024-09-07T00:01:44.244Z [info] : Broadcast completed 
+2024-09-07T00:02:14.096Z [info] : About to broadcast new transaction 
+2024-09-07T00:02:14.097Z [info] : Entering broadcast function 
+2024-09-07T00:02:14.097Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:14.097Z [info] : Client readyState: 
+2024-09-07T00:02:14.098Z [info] : Data sent to client 
+2024-09-07T00:02:14.098Z [info] : Exiting broadcast function 
+2024-09-07T00:02:14.099Z [info] : Broadcast completed 
+2024-09-07T00:02:22.782Z [info] : About to broadcast updated transaction 
+2024-09-07T00:02:22.783Z [info] : Entering broadcast function 
+2024-09-07T00:02:22.783Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:22.783Z [info] : Client readyState: 
+2024-09-07T00:02:22.784Z [info] : Data sent to client 
+2024-09-07T00:02:22.784Z [info] : Exiting broadcast function 
+2024-09-07T00:02:22.784Z [info] : Broadcast completed 
+2024-09-07T00:02:24.988Z [info] : About to broadcast updated transaction 
+2024-09-07T00:02:24.989Z [info] : Entering broadcast function 
+2024-09-07T00:02:24.989Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:24.989Z [info] : Client readyState: 
+2024-09-07T00:02:24.989Z [info] : Data sent to client 
+2024-09-07T00:02:24.989Z [info] : Exiting broadcast function 
+2024-09-07T00:02:24.989Z [info] : Broadcast completed 
+2024-09-07T00:02:26.123Z [info] : About to broadcast updated transaction 
+2024-09-07T00:02:26.123Z [info] : Entering broadcast function 
+2024-09-07T00:02:26.123Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:26.123Z [info] : Client readyState: 
+2024-09-07T00:02:26.124Z [info] : Data sent to client 
+2024-09-07T00:02:26.124Z [info] : Exiting broadcast function 
+2024-09-07T00:02:26.124Z [info] : Broadcast completed 
+2024-09-07T00:02:27.496Z [info] : About to broadcast updated transaction 
+2024-09-07T00:02:27.497Z [info] : Entering broadcast function 
+2024-09-07T00:02:27.497Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:27.497Z [info] : Client readyState: 
+2024-09-07T00:02:27.497Z [info] : Data sent to client 
+2024-09-07T00:02:27.498Z [info] : Exiting broadcast function 
+2024-09-07T00:02:27.498Z [info] : Broadcast completed 
+2024-09-07T00:02:29.123Z [info] : About to broadcast updated transaction 
+2024-09-07T00:02:29.123Z [info] : Entering broadcast function 
+2024-09-07T00:02:29.123Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:02:29.123Z [info] : Client readyState: 
+2024-09-07T00:02:29.124Z [info] : Data sent to client 
+2024-09-07T00:02:29.124Z [info] : Exiting broadcast function 
+2024-09-07T00:02:29.124Z [info] : Broadcast completed 
+2024-09-07T00:09:20.007Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:09:20.007Z [info] : Entering broadcast function 
+2024-09-07T00:09:20.008Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:09:20.008Z [info] : Client readyState: 
+2024-09-07T00:09:20.008Z [info] : Data sent to client 
+2024-09-07T00:09:20.008Z [info] : Exiting broadcast function 
+2024-09-07T00:09:20.008Z [info] : Broadcast completed 
+2024-09-07T00:09:22.832Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:09:22.832Z [info] : Entering broadcast function 
+2024-09-07T00:09:22.832Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:09:22.832Z [info] : Client readyState: 
+2024-09-07T00:09:22.833Z [info] : Data sent to client 
+2024-09-07T00:09:22.833Z [info] : Exiting broadcast function 
+2024-09-07T00:09:22.833Z [info] : Broadcast completed 
+2024-09-07T00:09:24.387Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:09:24.388Z [info] : Entering broadcast function 
+2024-09-07T00:09:24.388Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:09:24.388Z [info] : Client readyState: 
+2024-09-07T00:09:24.388Z [info] : Data sent to client 
+2024-09-07T00:09:24.389Z [info] : Exiting broadcast function 
+2024-09-07T00:09:24.389Z [info] : Broadcast completed 
+2024-09-07T00:12:11.221Z [info] : About to broadcast new transaction 
+2024-09-07T00:12:11.221Z [info] : Entering broadcast function 
+2024-09-07T00:12:11.221Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:12:11.222Z [info] : Client readyState: 
+2024-09-07T00:12:11.222Z [info] : Data sent to client 
+2024-09-07T00:12:11.222Z [info] : Exiting broadcast function 
+2024-09-07T00:12:11.222Z [info] : Broadcast completed 
+2024-09-07T00:14:18.855Z [info] : WebSocket client disconnected 
+2024-09-07T00:14:22.697Z [info] : About to broadcast new transaction 
+2024-09-07T00:14:22.697Z [info] : Entering broadcast function 
+2024-09-07T00:14:22.697Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:14:22.698Z [info] : Exiting broadcast function 
+2024-09-07T00:14:22.698Z [info] : Broadcast completed 
+2024-09-07T00:14:32.860Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:14:32.860Z [info] : Entering broadcast function 
+2024-09-07T00:14:32.860Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:14:32.860Z [info] : Exiting broadcast function 
+2024-09-07T00:14:32.860Z [info] : Broadcast completed 
+2024-09-07T00:14:34.697Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:14:34.698Z [info] : Entering broadcast function 
+2024-09-07T00:14:34.698Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:14:34.698Z [info] : Exiting broadcast function 
+2024-09-07T00:14:34.698Z [info] : Broadcast completed 
+2024-09-07T00:15:02.704Z [info] : New WebSocket client connected 
+2024-09-07T00:15:02.716Z [info] : New WebSocket client connected 
+2024-09-07T00:15:02.733Z [info] : WebSocket client disconnected 
+2024-09-07T00:18:10.696Z [info] : About to broadcast new transaction 
+2024-09-07T00:18:10.696Z [info] : Entering broadcast function 
+2024-09-07T00:18:10.697Z [info] : Number of WebSocket clients: 1 
+2024-09-07T00:18:10.697Z [info] : Client readyState: 
+2024-09-07T00:18:10.697Z [info] : Data sent to client 
+2024-09-07T00:18:10.697Z [info] : Exiting broadcast function 
+2024-09-07T00:18:10.697Z [info] : Broadcast completed 
+2024-09-07T00:22:48.140Z [info] : WebSocket server initialized 
+2024-09-07T00:22:48.308Z [info] : Connected to MongoDB 
+2024-09-07T00:22:48.309Z [info] : Server running on port 5000 
+2024-09-07T00:26:06.856Z [info] : About to broadcast updated transaction 
+2024-09-07T00:26:06.856Z [info] : Entering broadcast function 
+2024-09-07T00:26:06.856Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:26:06.857Z [info] : Exiting broadcast function 
+2024-09-07T00:26:06.857Z [info] : Broadcast completed 
+2024-09-07T00:26:09.508Z [info] : About to broadcast updated transaction 
+2024-09-07T00:26:09.508Z [info] : Entering broadcast function 
+2024-09-07T00:26:09.508Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:26:09.509Z [info] : Exiting broadcast function 
+2024-09-07T00:26:09.509Z [info] : Broadcast completed 
+2024-09-07T00:26:16.107Z [info] : About to broadcast new transaction 
+2024-09-07T00:26:16.107Z [info] : Entering broadcast function 
+2024-09-07T00:26:16.107Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:26:16.108Z [info] : Exiting broadcast function 
+2024-09-07T00:26:16.108Z [info] : Broadcast completed 
+2024-09-07T00:33:33.978Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:33:33.978Z [info] : Entering broadcast function 
+2024-09-07T00:33:33.979Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:33:33.979Z [info] : Exiting broadcast function 
+2024-09-07T00:33:33.979Z [info] : Broadcast completed 
+2024-09-07T00:34:11.756Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:34:11.756Z [info] : Entering broadcast function 
+2024-09-07T00:34:11.757Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:34:11.757Z [info] : Exiting broadcast function 
+2024-09-07T00:34:11.757Z [info] : Broadcast completed 
+2024-09-07T00:35:29.334Z [info] : About to broadcast new transaction 
+2024-09-07T00:35:29.335Z [info] : Entering broadcast function 
+2024-09-07T00:35:29.335Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:35:29.335Z [info] : Exiting broadcast function 
+2024-09-07T00:35:29.335Z [info] : Broadcast completed 
+2024-09-07T00:38:03.558Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:38:03.558Z [info] : Entering broadcast function 
+2024-09-07T00:38:03.558Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:38:03.558Z [info] : Exiting broadcast function 
+2024-09-07T00:38:03.559Z [info] : Broadcast completed 
+2024-09-07T00:40:12.741Z [info] : About to broadcast new transaction 
+2024-09-07T00:40:12.742Z [info] : Entering broadcast function 
+2024-09-07T00:40:12.742Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:40:12.742Z [info] : Exiting broadcast function 
+2024-09-07T00:40:12.742Z [info] : Broadcast completed 
+2024-09-07T00:43:50.652Z [info] : WebSocket server initialized 
+2024-09-07T00:43:50.832Z [info] : Connected to MongoDB 
+2024-09-07T00:43:50.833Z [info] : Server running on port 5000 
+2024-09-07T00:43:57.528Z [info] : WebSocket server initialized 
+2024-09-07T00:43:57.700Z [info] : Connected to MongoDB 
+2024-09-07T00:43:57.700Z [info] : Server running on port 5000 
+2024-09-07T00:44:06.003Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:44:06.004Z [info] : Entering broadcast function 
+2024-09-07T00:44:06.004Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:44:06.004Z [info] : Exiting broadcast function 
+2024-09-07T00:44:06.004Z [info] : Broadcast completed 
+2024-09-07T00:44:13.285Z [info] : WebSocket server initialized 
+2024-09-07T00:44:13.452Z [info] : Connected to MongoDB 
+2024-09-07T00:44:13.453Z [info] : Server running on port 5000 
+2024-09-07T00:48:04.338Z [info] : About to broadcast new transaction 
+2024-09-07T00:48:04.338Z [info] : Entering broadcast function 
+2024-09-07T00:48:04.339Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:48:04.339Z [info] : Exiting broadcast function 
+2024-09-07T00:48:04.339Z [info] : Broadcast completed 
+2024-09-07T00:48:11.685Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:48:11.685Z [info] : Entering broadcast function 
+2024-09-07T00:48:11.685Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:48:11.686Z [info] : Exiting broadcast function 
+2024-09-07T00:48:11.686Z [info] : Broadcast completed 
+2024-09-07T00:50:44.993Z [info] : About to broadcast new transaction 
+2024-09-07T00:50:44.993Z [info] : Entering broadcast function 
+2024-09-07T00:50:44.993Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:50:44.994Z [info] : Exiting broadcast function 
+2024-09-07T00:50:44.994Z [info] : Broadcast completed 
+2024-09-07T00:51:15.775Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:51:15.776Z [info] : Entering broadcast function 
+2024-09-07T00:51:15.776Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:51:15.776Z [info] : Exiting broadcast function 
+2024-09-07T00:51:15.776Z [info] : Broadcast completed 
+2024-09-07T00:51:25.029Z [info] : About to broadcast new transaction 
+2024-09-07T00:51:25.030Z [info] : Entering broadcast function 
+2024-09-07T00:51:25.030Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:51:25.030Z [info] : Exiting broadcast function 
+2024-09-07T00:51:25.030Z [info] : Broadcast completed 
+2024-09-07T00:51:28.607Z [info] : About to broadcast deleted transaction 
+2024-09-07T00:51:28.607Z [info] : Entering broadcast function 
+2024-09-07T00:51:28.607Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:51:28.607Z [info] : Exiting broadcast function 
+2024-09-07T00:51:28.607Z [info] : Broadcast completed 
+2024-09-07T00:55:31.350Z [info] : About to broadcast new transaction 
+2024-09-07T00:55:31.350Z [info] : Entering broadcast function 
+2024-09-07T00:55:31.350Z [info] : Number of WebSocket clients: 0 
+2024-09-07T00:55:31.351Z [info] : Exiting broadcast function 
+2024-09-07T00:55:31.351Z [info] : Broadcast completed 
+2024-09-07T01:00:54.573Z [info] : WebSocket server initialized 
+2024-09-07T01:00:54.739Z [info] : Connected to MongoDB 
+2024-09-07T01:00:54.740Z [info] : Server running on port 5000 
+2024-09-07T01:00:59.518Z [info] : WebSocket server initialized 
+2024-09-07T01:00:59.714Z [info] : Connected to MongoDB 
+2024-09-07T01:00:59.715Z [info] : Server running on port 5000 
+2024-09-07T01:01:09.099Z [info] : WebSocket server initialized 
+2024-09-07T01:01:09.277Z [info] : Connected to MongoDB 
+2024-09-07T01:01:09.277Z [info] : Server running on port 5000 
+2024-09-07T01:11:25.783Z [info] : About to broadcast deleted transaction 
+2024-09-07T01:11:25.783Z [info] : Entering broadcast function 
+2024-09-07T01:11:25.784Z [info] : Number of WebSocket clients: 0 
+2024-09-07T01:11:25.784Z [info] : Exiting broadcast function 
+2024-09-07T01:11:25.784Z [info] : Broadcast completed 
+2024-09-07T01:14:21.939Z [info] : About to broadcast deleted transaction 
+2024-09-07T01:14:21.939Z [info] : Entering broadcast function 
+2024-09-07T01:14:21.939Z [info] : Number of WebSocket clients: 0 
+2024-09-07T01:14:21.940Z [info] : Exiting broadcast function 
+2024-09-07T01:14:21.940Z [info] : Broadcast completed 
+2024-09-07T01:17:24.309Z [info] : About to broadcast new transaction 
+2024-09-07T01:17:24.309Z [info] : Entering broadcast function 
+2024-09-07T01:17:24.309Z [info] : Number of WebSocket clients: 0 
+2024-09-07T01:17:24.310Z [info] : Exiting broadcast function 
+2024-09-07T01:17:24.310Z [info] : Broadcast completed 
+2024-09-07T01:17:53.601Z [info] : New WebSocket client connected 
+2024-09-07T01:17:53.625Z [info] : New WebSocket client connected 
+2024-09-07T01:17:53.631Z [info] : WebSocket client disconnected 
+2024-09-07T01:18:20.800Z [info] : About to broadcast new transaction 
+2024-09-07T01:18:20.801Z [info] : Entering broadcast function 
+2024-09-07T01:18:20.801Z [info] : Number of WebSocket clients: 1 
+2024-09-07T01:18:20.801Z [info] : Client readyState: 
+2024-09-07T01:18:20.802Z [info] : Data sent to client 
+2024-09-07T01:18:20.802Z [info] : Exiting broadcast function 
+2024-09-07T01:18:20.803Z [info] : Broadcast completed 
+2024-09-07T01:18:34.015Z [info] : About to broadcast new transaction 
+2024-09-07T01:18:34.015Z [info] : Entering broadcast function 
+2024-09-07T01:18:34.016Z [info] : Number of WebSocket clients: 1 
+2024-09-07T01:18:34.016Z [info] : Client readyState: 
+2024-09-07T01:18:34.016Z [info] : Data sent to client 
+2024-09-07T01:18:34.017Z [info] : Exiting broadcast function 
+2024-09-07T01:18:34.017Z [info] : Broadcast completed 
+2024-09-07T23:43:28.968Z [info] : WebSocket server initialized 
+2024-09-07T23:43:29.184Z [info] : Connected to MongoDB 
+2024-09-07T23:43:29.184Z [info] : Server running on port 5000 
+2024-09-07T23:43:45.576Z [info] : New WebSocket client connected 
+2024-09-07T23:43:45.593Z [info] : WebSocket client disconnected 
+2024-09-07T23:43:45.594Z [info] : New WebSocket client connected 
+2024-09-07T23:43:49.849Z [info] : WebSocket client disconnected 
+2024-09-07T23:44:23.972Z [info] : WebSocket server initialized 
+2024-09-07T23:44:24.126Z [info] : Connected to MongoDB 
+2024-09-07T23:44:24.126Z [info] : Server running on port 5000 
+2024-09-07T23:45:03.460Z [info] : WebSocket server initialized 
+2024-09-07T23:45:03.616Z [info] : Connected to MongoDB 
+2024-09-07T23:45:03.617Z [info] : Server running on port 5000 
+2024-09-07T23:45:33.045Z [info] : WebSocket server initialized 
+2024-09-07T23:45:33.202Z [info] : Connected to MongoDB 
+2024-09-07T23:45:33.203Z [info] : Server running on port 5000 
+2024-09-07T23:45:35.125Z [info] : New WebSocket client connected 
+2024-09-07T23:45:35.148Z [info] : New WebSocket client connected 
+2024-09-07T23:45:35.149Z [info] : WebSocket client disconnected 
+2024-09-07T23:45:37.040Z [info] : WebSocket client disconnected 
+2024-09-07T23:45:45.069Z [info] : New WebSocket client connected 
+2024-09-07T23:45:45.085Z [info] : New WebSocket client connected 
+2024-09-07T23:45:45.109Z [info] : WebSocket client disconnected 
+2024-09-07T23:45:47.366Z [info] : About to broadcast new transaction 
+2024-09-07T23:45:47.366Z [info] : Entering broadcast function 
+2024-09-07T23:45:47.367Z [info] : Number of WebSocket clients: 1 
+2024-09-07T23:45:47.367Z [info] : Client readyState: 
+2024-09-07T23:45:47.368Z [info] : Data sent to client 
+2024-09-07T23:45:47.368Z [info] : Exiting broadcast function 
+2024-09-07T23:45:47.368Z [info] : Broadcast completed 
+2024-09-07T23:47:05.891Z [info] : WebSocket client disconnected 
+2024-09-07T23:47:06.425Z [info] : New WebSocket client connected 
+2024-09-07T23:47:06.439Z [info] : New WebSocket client connected 
+2024-09-07T23:47:06.447Z [info] : WebSocket client disconnected 
+2024-09-07T23:47:13.219Z [info] : About to broadcast new transaction 
+2024-09-07T23:47:13.220Z [info] : Entering broadcast function 
+2024-09-07T23:47:13.220Z [info] : Number of WebSocket clients: 1 
+2024-09-07T23:47:13.220Z [info] : Client readyState: 
+2024-09-07T23:47:13.221Z [info] : Data sent to client 
+2024-09-07T23:47:13.221Z [info] : Exiting broadcast function 
+2024-09-07T23:47:13.221Z [info] : Broadcast completed 
+2024-09-07T23:47:19.562Z [info] : About to broadcast new transaction 
+2024-09-07T23:47:19.562Z [info] : Entering broadcast function 
+2024-09-07T23:47:19.563Z [info] : Number of WebSocket clients: 1 
+2024-09-07T23:47:19.563Z [info] : Client readyState: 
+2024-09-07T23:47:19.563Z [info] : Data sent to client 
+2024-09-07T23:47:19.563Z [info] : Exiting broadcast function 
+2024-09-07T23:47:19.564Z [info] : Broadcast completed 
+2024-09-07T23:48:05.051Z [info] : WebSocket client disconnected 
+2024-09-07T23:48:05.404Z [info] : New WebSocket client connected 
+2024-09-07T23:48:05.415Z [info] : New WebSocket client connected 
+2024-09-07T23:48:05.425Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:34.707Z [info] : WebSocket server initialized 
+2024-09-07T23:53:34.868Z [info] : Connected to MongoDB 
+2024-09-07T23:53:34.868Z [info] : Server running on port 5000 
+2024-09-07T23:53:49.967Z [info] : WebSocket server initialized 
+2024-09-07T23:53:50.124Z [info] : Connected to MongoDB 
+2024-09-07T23:53:50.124Z [info] : Server running on port 5000 
+2024-09-07T23:53:52.917Z [info] : New WebSocket client connected 
+2024-09-07T23:53:52.931Z [info] : New WebSocket client connected 
+2024-09-07T23:53:52.932Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:53.276Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:53.405Z [info] : New WebSocket client connected 
+2024-09-07T23:53:53.416Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:53.417Z [info] : New WebSocket client connected 
+2024-09-07T23:53:53.725Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:54.022Z [info] : New WebSocket client connected 
+2024-09-07T23:53:54.041Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:54.045Z [info] : New WebSocket client connected 
+2024-09-07T23:53:54.578Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:58.286Z [info] : New WebSocket client connected 
+2024-09-07T23:53:58.295Z [info] : WebSocket client disconnected 
+2024-09-07T23:53:58.306Z [info] : New WebSocket client connected 
+2024-09-07T23:53:59.252Z [info] : WebSocket client disconnected 
+2024-09-07T23:54:03.142Z [info] : About to broadcast deleted transaction 
+2024-09-07T23:54:03.142Z [info] : Entering broadcast function 
+2024-09-07T23:54:03.143Z [info] : Number of WebSocket clients: 0 
+2024-09-07T23:54:03.143Z [info] : Exiting broadcast function 
+2024-09-07T23:54:03.143Z [info] : Broadcast completed 
+2024-09-07T23:59:41.269Z [info] : About to broadcast deleted transaction 
+2024-09-07T23:59:41.270Z [info] : Entering broadcast function 
+2024-09-07T23:59:41.270Z [info] : Number of WebSocket clients: 0 
+2024-09-07T23:59:41.270Z [info] : Exiting broadcast function 
+2024-09-07T23:59:41.271Z [info] : Broadcast completed 
+2024-09-08T00:00:47.165Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:00:47.165Z [info] : Entering broadcast function 
+2024-09-08T00:00:47.166Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:00:47.166Z [info] : Exiting broadcast function 
+2024-09-08T00:00:47.166Z [info] : Broadcast completed 
+2024-09-08T00:01:06.095Z [info] : About to broadcast new transaction 
+2024-09-08T00:01:06.096Z [info] : Entering broadcast function 
+2024-09-08T00:01:06.096Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:01:06.096Z [info] : Exiting broadcast function 
+2024-09-08T00:01:06.097Z [info] : Broadcast completed 
+2024-09-08T00:01:10.303Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:01:10.303Z [info] : Entering broadcast function 
+2024-09-08T00:01:10.304Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:01:10.304Z [info] : Exiting broadcast function 
+2024-09-08T00:01:10.304Z [info] : Broadcast completed 
+2024-09-08T00:07:34.463Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:07:34.463Z [info] : Entering broadcast function 
+2024-09-08T00:07:34.463Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:07:34.464Z [info] : Exiting broadcast function 
+2024-09-08T00:07:34.464Z [info] : Broadcast completed 
+2024-09-08T00:10:11.999Z [info] : About to broadcast new transaction 
+2024-09-08T00:10:11.999Z [info] : Entering broadcast function 
+2024-09-08T00:10:11.999Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:10:11.999Z [info] : Exiting broadcast function 
+2024-09-08T00:10:12.000Z [info] : Broadcast completed 
+2024-09-08T00:10:17.786Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:10:17.787Z [info] : Entering broadcast function 
+2024-09-08T00:10:17.787Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:10:17.787Z [info] : Exiting broadcast function 
+2024-09-08T00:10:17.787Z [info] : Broadcast completed 
+2024-09-08T00:11:40.094Z [info] : About to broadcast new transaction 
+2024-09-08T00:11:40.095Z [info] : Entering broadcast function 
+2024-09-08T00:11:40.095Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:11:40.096Z [info] : Exiting broadcast function 
+2024-09-08T00:11:40.096Z [info] : Broadcast completed 
+2024-09-08T00:14:50.355Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:14:50.356Z [info] : Entering broadcast function 
+2024-09-08T00:14:50.356Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:14:50.356Z [info] : Exiting broadcast function 
+2024-09-08T00:14:50.356Z [info] : Broadcast completed 
+2024-09-08T00:16:45.465Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:16:45.466Z [info] : Entering broadcast function 
+2024-09-08T00:16:45.466Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:16:45.466Z [info] : Exiting broadcast function 
+2024-09-08T00:16:45.466Z [info] : Broadcast completed 
+2024-09-08T00:17:00.603Z [info] : About to broadcast new transaction 
+2024-09-08T00:17:00.603Z [info] : Entering broadcast function 
+2024-09-08T00:17:00.603Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:17:00.603Z [info] : Exiting broadcast function 
+2024-09-08T00:17:00.603Z [info] : Broadcast completed 
+2024-09-08T00:19:34.046Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:19:34.047Z [info] : Entering broadcast function 
+2024-09-08T00:19:34.047Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:19:34.047Z [info] : Exiting broadcast function 
+2024-09-08T00:19:34.047Z [info] : Broadcast completed 
+2024-09-08T00:22:41.265Z [info] : About to broadcast new transaction 
+2024-09-08T00:22:41.266Z [info] : Entering broadcast function 
+2024-09-08T00:22:41.266Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:22:41.266Z [info] : Exiting broadcast function 
+2024-09-08T00:22:41.266Z [info] : Broadcast completed 
+2024-09-08T00:22:57.123Z [info] : About to broadcast new transaction 
+2024-09-08T00:22:57.123Z [info] : Entering broadcast function 
+2024-09-08T00:22:57.123Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:22:57.123Z [info] : Exiting broadcast function 
+2024-09-08T00:22:57.124Z [info] : Broadcast completed 
+2024-09-08T00:23:39.578Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:23:39.579Z [info] : Entering broadcast function 
+2024-09-08T00:23:39.579Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:23:39.579Z [info] : Exiting broadcast function 
+2024-09-08T00:23:39.579Z [info] : Broadcast completed 
+2024-09-08T00:23:41.211Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:23:41.212Z [info] : Entering broadcast function 
+2024-09-08T00:23:41.212Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:23:41.212Z [info] : Exiting broadcast function 
+2024-09-08T00:23:41.212Z [info] : Broadcast completed 
+2024-09-08T00:26:57.335Z [info] : About to broadcast new transaction 
+2024-09-08T00:26:57.335Z [info] : Entering broadcast function 
+2024-09-08T00:26:57.335Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:26:57.336Z [info] : Exiting broadcast function 
+2024-09-08T00:26:57.336Z [info] : Broadcast completed 
+2024-09-08T00:28:14.628Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:28:14.628Z [info] : Entering broadcast function 
+2024-09-08T00:28:14.629Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:28:14.629Z [info] : Exiting broadcast function 
+2024-09-08T00:28:14.629Z [info] : Broadcast completed 
+2024-09-08T00:28:18.336Z [info] : About to broadcast new transaction 
+2024-09-08T00:28:18.337Z [info] : Entering broadcast function 
+2024-09-08T00:28:18.337Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:28:18.337Z [info] : Exiting broadcast function 
+2024-09-08T00:28:18.337Z [info] : Broadcast completed 
+2024-09-08T00:40:21.326Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:40:21.327Z [info] : Entering broadcast function 
+2024-09-08T00:40:21.327Z [info] : Number of WebSocket clients: 0 
+2024-09-08T00:40:21.328Z [info] : Exiting broadcast function 
+2024-09-08T00:40:21.328Z [info] : Broadcast completed 
+2024-09-08T00:43:31.539Z [info] : WebSocket server initialized 
+2024-09-08T00:43:31.700Z [info] : Connected to MongoDB 
+2024-09-08T00:43:31.700Z [info] : Server running on port 5000 
+2024-09-08T00:44:06.275Z [info] : New WebSocket client connected 
+2024-09-08T00:44:06.286Z [info] : WebSocket client disconnected 
+2024-09-08T00:44:06.301Z [info] : New WebSocket client connected 
+2024-09-08T00:44:13.550Z [info] : About to broadcast new transaction 
+2024-09-08T00:44:13.576Z [info] : Broadcast sent to API server 
+2024-09-08T00:44:13.576Z [info] : Broadcast completed 
+2024-09-08T00:44:29.950Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:44:29.954Z [info] : Broadcast sent to API server 
+2024-09-08T00:44:29.955Z [info] : Broadcast completed 
+2024-09-08T00:44:51.169Z [info] : About to broadcast new transaction 
+2024-09-08T00:44:51.173Z [info] : Broadcast sent to API server 
+2024-09-08T00:44:51.173Z [info] : Broadcast completed 
+2024-09-08T00:45:23.806Z [info] : About to broadcast new transaction 
+2024-09-08T00:45:23.810Z [info] : Broadcast sent to API server 
+2024-09-08T00:45:23.810Z [info] : Broadcast completed 
+2024-09-08T00:47:35.403Z [info] : WebSocket server initialized 
+2024-09-08T00:47:35.561Z [info] : Connected to MongoDB 
+2024-09-08T00:47:35.561Z [info] : Server running on port 5000 
+2024-09-08T00:47:42.633Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:47:42.644Z [info] : Broadcast sent to API server 
+2024-09-08T00:47:42.644Z [info] : Broadcast completed 
+2024-09-08T00:47:52.012Z [info] : About to broadcast new transaction 
+2024-09-08T00:47:52.017Z [info] : Broadcast sent to API server 
+2024-09-08T00:47:52.018Z [info] : Broadcast completed 
+2024-09-08T00:48:49.447Z [info] : New WebSocket client connected 
+2024-09-08T00:48:49.469Z [info] : New WebSocket client connected 
+2024-09-08T00:48:49.470Z [info] : WebSocket client disconnected 
+2024-09-08T00:48:51.054Z [info] : WebSocket client disconnected 
+2024-09-08T00:48:51.219Z [info] : New WebSocket client connected 
+2024-09-08T00:48:51.229Z [info] : WebSocket client disconnected 
+2024-09-08T00:48:51.230Z [info] : New WebSocket client connected 
+2024-09-08T00:48:55.724Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:48:55.728Z [info] : Broadcast sent to API server 
+2024-09-08T00:48:55.728Z [info] : Broadcast completed 
+2024-09-08T00:48:57.134Z [info] : WebSocket client disconnected 
+2024-09-08T00:48:57.275Z [info] : New WebSocket client connected 
+2024-09-08T00:48:57.285Z [info] : WebSocket client disconnected 
+2024-09-08T00:48:57.286Z [info] : New WebSocket client connected 
+2024-09-08T00:50:04.672Z [info] : About to broadcast new transaction 
+2024-09-08T00:50:04.676Z [info] : Broadcast sent to API server 
+2024-09-08T00:50:04.676Z [info] : Broadcast completed 
+2024-09-08T00:51:06.937Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:51:06.941Z [info] : Broadcast sent to API server 
+2024-09-08T00:51:06.942Z [info] : Broadcast completed 
+2024-09-08T00:51:43.655Z [info] : About to broadcast new transaction 
+2024-09-08T00:51:43.658Z [info] : Broadcast sent to API server 
+2024-09-08T00:51:43.659Z [info] : Broadcast completed 
+2024-09-08T00:55:02.734Z [info] : WebSocket client disconnected 
+2024-09-08T00:55:02.965Z [info] : New WebSocket client connected 
+2024-09-08T00:55:02.985Z [info] : WebSocket client disconnected 
+2024-09-08T00:55:02.985Z [info] : New WebSocket client connected 
+2024-09-08T00:55:13.424Z [info] : About to broadcast new transaction 
+2024-09-08T00:55:13.427Z [info] : Broadcast sent to API server 
+2024-09-08T00:55:13.427Z [info] : Broadcast completed 
+2024-09-08T00:56:47.985Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:56:47.999Z [info] : Broadcast sent to API server 
+2024-09-08T00:56:47.999Z [info] : Broadcast completed 
+2024-09-08T00:56:56.741Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:56:56.746Z [info] : Broadcast sent to API server 
+2024-09-08T00:56:56.746Z [info] : Broadcast completed 
+2024-09-08T00:56:59.091Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:56:59.095Z [info] : Broadcast sent to API server 
+2024-09-08T00:56:59.095Z [info] : Broadcast completed 
+2024-09-08T00:57:17.910Z [info] : About to broadcast new transaction 
+2024-09-08T00:57:17.914Z [info] : Broadcast sent to API server 
+2024-09-08T00:57:17.914Z [info] : Broadcast completed 
+2024-09-08T00:59:54.726Z [info] : About to broadcast deleted transaction 
+2024-09-08T00:59:54.730Z [info] : Broadcast sent to API server 
+2024-09-08T00:59:54.730Z [info] : Broadcast completed 
+2024-09-08T01:00:01.963Z [info] : About to broadcast new transaction 
+2024-09-08T01:00:01.967Z [info] : Broadcast sent to API server 
+2024-09-08T01:00:01.967Z [info] : Broadcast completed 
+2024-09-08T01:00:25.410Z [info] : About to broadcast new transaction 
+2024-09-08T01:00:25.413Z [info] : Broadcast sent to API server 
+2024-09-08T01:00:25.414Z [info] : Broadcast completed 
+2024-09-08T01:00:28.725Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:00:28.728Z [info] : Broadcast sent to API server 
+2024-09-08T01:00:28.728Z [info] : Broadcast completed 
+2024-09-08T01:01:36.424Z [info] : About to broadcast new transaction 
+2024-09-08T01:01:36.427Z [info] : Broadcast sent to API server 
+2024-09-08T01:01:36.427Z [info] : Broadcast completed 
+2024-09-08T01:01:41.730Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:01:41.733Z [info] : Broadcast sent to API server 
+2024-09-08T01:01:41.733Z [info] : Broadcast completed 
+2024-09-08T01:03:15.735Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:03:15.738Z [info] : Broadcast sent to API server 
+2024-09-08T01:03:15.738Z [info] : Broadcast completed 
+2024-09-08T01:03:57.483Z [info] : About to broadcast new transaction 
+2024-09-08T01:03:57.487Z [info] : Broadcast sent to API server 
+2024-09-08T01:03:57.488Z [info] : Broadcast completed 
+2024-09-08T01:04:00.272Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:04:00.275Z [info] : Broadcast sent to API server 
+2024-09-08T01:04:00.275Z [info] : Broadcast completed 
+2024-09-08T01:04:16.674Z [info] : WebSocket client disconnected 
+2024-09-08T01:04:16.815Z [info] : New WebSocket client connected 
+2024-09-08T01:04:16.829Z [info] : WebSocket client disconnected 
+2024-09-08T01:04:16.840Z [info] : New WebSocket client connected 
+2024-09-08T01:04:30.320Z [info] : About to broadcast new transaction 
+2024-09-08T01:04:30.323Z [info] : Broadcast sent to API server 
+2024-09-08T01:04:30.324Z [info] : Broadcast completed 
+2024-09-08T01:04:33.677Z [info] : WebSocket client disconnected 
+2024-09-08T01:04:33.851Z [info] : New WebSocket client connected 
+2024-09-08T01:04:33.860Z [info] : WebSocket client disconnected 
+2024-09-08T01:04:33.862Z [info] : New WebSocket client connected 
+2024-09-08T01:06:21.641Z [info] : WebSocket client disconnected 
+2024-09-08T01:06:21.649Z [info] : New WebSocket client connected 
+2024-09-08T01:06:21.674Z [info] : WebSocket client disconnected 
+2024-09-08T01:06:21.681Z [info] : New WebSocket client connected 
+2024-09-08T01:06:31.199Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:06:31.202Z [info] : Broadcast sent to API server 
+2024-09-08T01:06:31.202Z [info] : Broadcast completed 
+2024-09-08T01:07:43.074Z [info] : WebSocket client disconnected 
+2024-09-08T01:07:43.078Z [info] : New WebSocket client connected 
+2024-09-08T01:07:44.066Z [info] : WebSocket client disconnected 
+2024-09-08T01:07:44.857Z [info] : New WebSocket client connected 
+2024-09-08T01:07:44.868Z [info] : New WebSocket client connected 
+2024-09-08T01:07:44.879Z [info] : WebSocket client disconnected 
+2024-09-08T01:08:32.839Z [info] : WebSocket client disconnected 
+2024-09-08T01:08:33.629Z [info] : New WebSocket client connected 
+2024-09-08T01:08:33.639Z [info] : New WebSocket client connected 
+2024-09-08T01:09:10.977Z [info] : About to broadcast new transaction 
+2024-09-08T01:09:10.980Z [info] : Broadcast sent to API server 
+2024-09-08T01:09:10.981Z [info] : Broadcast completed 
+2024-09-08T01:11:23.500Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:11:23.503Z [info] : Broadcast sent to API server 
+2024-09-08T01:11:23.504Z [info] : Broadcast completed 
+2024-09-08T01:11:31.004Z [info] : WebSocket server initialized 
+2024-09-08T01:11:31.157Z [info] : Connected to MongoDB 
+2024-09-08T01:11:31.157Z [info] : Server running on port 5000 
+2024-09-08T01:11:32.135Z [info] : New WebSocket client connected 
+2024-09-08T01:11:32.154Z [info] : New WebSocket client connected 
+2024-09-08T01:11:38.659Z [info] : About to broadcast new transaction 
+2024-09-08T01:11:38.660Z [info] : Sending broadcast to API server: {
+  "0": "{",
+  "1": "\"",
+  "2": "t",
+  "3": "y",
+  "4": "p",
+  "5": "e",
+  "6": "\"",
+  "7": ":",
+  "8": "\"",
+  "9": "n",
+  "10": "e",
+  "11": "w",
+  "12": "T",
+  "13": "r",
+  "14": "a",
+  "15": "n",
+  "16": "s",
+  "17": "a",
+  "18": "c",
+  "19": "t",
+  "20": "i",
+  "21": "o",
+  "22": "n",
+  "23": "\"",
+  "24": ",",
+  "25": "\"",
+  "26": "t",
+  "27": "r",
+  "28": "a",
+  "29": "n",
+  "30": "s",
+  "31": "a",
+  "32": "c",
+  "33": "t",
+  "34": "i",
+  "35": "o",
+  "36": "n",
+  "37": "\"",
+  "38": ":",
+  "39": "{",
+  "40": "\"",
+  "41": "u",
+  "42": "s",
+  "43": "e",
+  "44": "r",
+  "45": "I",
+  "46": "d",
+  "47": "\"",
+  "48": ":",
+  "49": "\"",
+  "50": "6",
+  "51": "6",
+  "52": "d",
+  "53": "b",
+  "54": "5",
+  "55": "f",
+  "56": "a",
+  "57": "4",
+  "58": "1",
+  "59": "5",
+  "60": "8",
+  "61": "4",
+  "62": "1",
+  "63": "f",
+  "64": "2",
+  "65": "5",
+  "66": "c",
+  "67": "6",
+  "68": "1",
+  "69": "0",
+  "70": "d",
+  "71": "6",
+  "72": "0",
+  "73": "a",
+  "74": "\"",
+  "75": ",",
+  "76": "\"",
+  "77": "d",
+  "78": "a",
+  "79": "t",
+  "80": "e",
+  "81": "\"",
+  "82": ":",
+  "83": "\"",
+  "84": "2",
+  "85": "0",
+  "86": "2",
+  "87": "4",
+  "88": "-",
+  "89": "0",
+  "90": "9",
+  "91": "-",
+  "92": "0",
+  "93": "8",
+  "94": "T",
+  "95": "0",
+  "96": "0",
+  "97": ":",
+  "98": "0",
+  "99": "0",
+  "100": ":",
+  "101": "0",
+  "102": "0",
+  "103": ".",
+  "104": "0",
+  "105": "0",
+  "106": "0",
+  "107": "Z",
+  "108": "\"",
+  "109": ",",
+  "110": "\"",
+  "111": "t",
+  "112": "y",
+  "113": "p",
+  "114": "e",
+  "115": "\"",
+  "116": ":",
+  "117": "\"",
+  "118": "e",
+  "119": "x",
+  "120": "p",
+  "121": "e",
+  "122": "n",
+  "123": "s",
+  "124": "e",
+  "125": "\"",
+  "126": ",",
+  "127": "\"",
+  "128": "c",
+  "129": "a",
+  "130": "t",
+  "131": "e",
+  "132": "g",
+  "133": "o",
+  "134": "r",
+  "135": "y",
+  "136": "\"",
+  "137": ":",
+  "138": "\"",
+  "139": "W",
+  "140": "E",
+  "141": "B",
+  "142": "S",
+  "143": "O",
+  "144": "C",
+  "145": "K",
+  "146": "E",
+  "147": "T",
+  "148": "\"",
+  "149": ",",
+  "150": "\"",
+  "151": "a",
+  "152": "m",
+  "153": "o",
+  "154": "u",
+  "155": "n",
+  "156": "t",
+  "157": "\"",
+  "158": ":",
+  "159": "1",
+  "160": "2",
+  "161": ",",
+  "162": "\"",
+  "163": "i",
+  "164": "s",
+  "165": "P",
+  "166": "a",
+  "167": "i",
+  "168": "d",
+  "169": "\"",
+  "170": ":",
+  "171": "n",
+  "172": "u",
+  "173": "l",
+  "174": "l",
+  "175": ",",
+  "176": "\"",
+  "177": "d",
+  "178": "u",
+  "179": "e",
+  "180": "D",
+  "181": "a",
+  "182": "t",
+  "183": "e",
+  "184": "\"",
+  "185": ":",
+  "186": "n",
+  "187": "u",
+  "188": "l",
+  "189": "l",
+  "190": ",",
+  "191": "\"",
+  "192": "_",
+  "193": "i",
+  "194": "d",
+  "195": "\"",
+  "196": ":",
+  "197": "\"",
+  "198": "6",
+  "199": "6",
+  "200": "d",
+  "201": "c",
+  "202": "f",
+  "203": "9",
+  "204": "c",
+  "205": "a",
+  "206": "0",
+  "207": "4",
+  "208": "5",
+  "209": "5",
+  "210": "e",
+  "211": "b",
+  "212": "2",
+  "213": "3",
+  "214": "4",
+  "215": "5",
+  "216": "0",
+  "217": "0",
+  "218": "b",
+  "219": "6",
+  "220": "0",
+  "221": "3",
+  "222": "\"",
+  "223": ",",
+  "224": "\"",
+  "225": "c",
+  "226": "r",
+  "227": "e",
+  "228": "a",
+  "229": "t",
+  "230": "e",
+  "231": "d",
+  "232": "A",
+  "233": "t",
+  "234": "\"",
+  "235": ":",
+  "236": "\"",
+  "237": "2",
+  "238": "0",
+  "239": "2",
+  "240": "4",
+  "241": "-",
+  "242": "0",
+  "243": "9",
+  "244": "-",
+  "245": "0",
+  "246": "8",
+  "247": "T",
+  "248": "0",
+  "249": "1",
+  "250": ":",
+  "251": "1",
+  "252": "1",
+  "253": ":",
+  "254": "3",
+  "255": "8",
+  "256": ".",
+  "257": "6",
+  "258": "5",
+  "259": "3",
+  "260": "Z",
+  "261": "\"",
+  "262": ",",
+  "263": "\"",
+  "264": "_",
+  "265": "_",
+  "266": "v",
+  "267": "\"",
+  "268": ":",
+  "269": "0",
+  "270": "}",
+  "271": "}"
+}
+2024-09-08T01:11:38.673Z [info] : Broadcast sent to API server 
+2024-09-08T01:11:38.673Z [info] : Broadcast completed 
+2024-09-08T01:13:39.358Z [info] : WebSocket client disconnected 
+2024-09-08T01:13:39.359Z [info] : WebSocket client disconnected 
+2024-09-08T01:13:39.911Z [info] : New WebSocket client connected 
+2024-09-08T01:13:39.932Z [info] : New WebSocket client connected 
+2024-09-08T01:13:43.976Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:13:43.977Z [info] : Sending broadcast to API server: {
+  "0": "{",
+  "1": "\"",
+  "2": "t",
+  "3": "y",
+  "4": "p",
+  "5": "e",
+  "6": "\"",
+  "7": ":",
+  "8": "\"",
+  "9": "d",
+  "10": "e",
+  "11": "l",
+  "12": "e",
+  "13": "t",
+  "14": "e",
+  "15": "T",
+  "16": "r",
+  "17": "a",
+  "18": "n",
+  "19": "s",
+  "20": "a",
+  "21": "c",
+  "22": "t",
+  "23": "i",
+  "24": "o",
+  "25": "n",
+  "26": "\"",
+  "27": ",",
+  "28": "\"",
+  "29": "t",
+  "30": "r",
+  "31": "a",
+  "32": "n",
+  "33": "s",
+  "34": "a",
+  "35": "c",
+  "36": "t",
+  "37": "i",
+  "38": "o",
+  "39": "n",
+  "40": "I",
+  "41": "d",
+  "42": "\"",
+  "43": ":",
+  "44": "\"",
+  "45": "6",
+  "46": "6",
+  "47": "d",
+  "48": "c",
+  "49": "f",
+  "50": "9",
+  "51": "c",
+  "52": "a",
+  "53": "0",
+  "54": "4",
+  "55": "5",
+  "56": "5",
+  "57": "e",
+  "58": "b",
+  "59": "2",
+  "60": "3",
+  "61": "4",
+  "62": "5",
+  "63": "0",
+  "64": "0",
+  "65": "b",
+  "66": "6",
+  "67": "0",
+  "68": "3",
+  "69": "\"",
+  "70": ",",
+  "71": "\"",
+  "72": "u",
+  "73": "s",
+  "74": "e",
+  "75": "r",
+  "76": "I",
+  "77": "d",
+  "78": "\"",
+  "79": ":",
+  "80": "\"",
+  "81": "6",
+  "82": "6",
+  "83": "d",
+  "84": "b",
+  "85": "5",
+  "86": "f",
+  "87": "a",
+  "88": "4",
+  "89": "1",
+  "90": "5",
+  "91": "8",
+  "92": "4",
+  "93": "1",
+  "94": "f",
+  "95": "2",
+  "96": "5",
+  "97": "c",
+  "98": "6",
+  "99": "1",
+  "100": "0",
+  "101": "d",
+  "102": "6",
+  "103": "0",
+  "104": "a",
+  "105": "\"",
+  "106": "}"
+}
+2024-09-08T01:13:43.982Z [info] : Broadcast sent to API server 
+2024-09-08T01:13:43.982Z [info] : Broadcast completed 
+2024-09-08T01:13:46.325Z [info] : WebSocket client disconnected 
+2024-09-08T01:13:46.326Z [info] : WebSocket client disconnected 
+2024-09-08T01:13:46.678Z [info] : New WebSocket client connected 
+2024-09-08T01:13:46.696Z [info] : New WebSocket client connected 
+2024-09-08T01:13:50.371Z [info] : About to broadcast new transaction 
+2024-09-08T01:13:50.372Z [info] : Sending broadcast to API server: {
+  "0": "{",
+  "1": "\"",
+  "2": "t",
+  "3": "y",
+  "4": "p",
+  "5": "e",
+  "6": "\"",
+  "7": ":",
+  "8": "\"",
+  "9": "n",
+  "10": "e",
+  "11": "w",
+  "12": "T",
+  "13": "r",
+  "14": "a",
+  "15": "n",
+  "16": "s",
+  "17": "a",
+  "18": "c",
+  "19": "t",
+  "20": "i",
+  "21": "o",
+  "22": "n",
+  "23": "\"",
+  "24": ",",
+  "25": "\"",
+  "26": "t",
+  "27": "r",
+  "28": "a",
+  "29": "n",
+  "30": "s",
+  "31": "a",
+  "32": "c",
+  "33": "t",
+  "34": "i",
+  "35": "o",
+  "36": "n",
+  "37": "\"",
+  "38": ":",
+  "39": "{",
+  "40": "\"",
+  "41": "u",
+  "42": "s",
+  "43": "e",
+  "44": "r",
+  "45": "I",
+  "46": "d",
+  "47": "\"",
+  "48": ":",
+  "49": "\"",
+  "50": "6",
+  "51": "6",
+  "52": "d",
+  "53": "b",
+  "54": "5",
+  "55": "f",
+  "56": "a",
+  "57": "4",
+  "58": "1",
+  "59": "5",
+  "60": "8",
+  "61": "4",
+  "62": "1",
+  "63": "f",
+  "64": "2",
+  "65": "5",
+  "66": "c",
+  "67": "6",
+  "68": "1",
+  "69": "0",
+  "70": "d",
+  "71": "6",
+  "72": "0",
+  "73": "a",
+  "74": "\"",
+  "75": ",",
+  "76": "\"",
+  "77": "d",
+  "78": "a",
+  "79": "t",
+  "80": "e",
+  "81": "\"",
+  "82": ":",
+  "83": "\"",
+  "84": "2",
+  "85": "0",
+  "86": "2",
+  "87": "4",
+  "88": "-",
+  "89": "0",
+  "90": "9",
+  "91": "-",
+  "92": "0",
+  "93": "8",
+  "94": "T",
+  "95": "0",
+  "96": "0",
+  "97": ":",
+  "98": "0",
+  "99": "0",
+  "100": ":",
+  "101": "0",
+  "102": "0",
+  "103": ".",
+  "104": "0",
+  "105": "0",
+  "106": "0",
+  "107": "Z",
+  "108": "\"",
+  "109": ",",
+  "110": "\"",
+  "111": "t",
+  "112": "y",
+  "113": "p",
+  "114": "e",
+  "115": "\"",
+  "116": ":",
+  "117": "\"",
+  "118": "e",
+  "119": "x",
+  "120": "p",
+  "121": "e",
+  "122": "n",
+  "123": "s",
+  "124": "e",
+  "125": "\"",
+  "126": ",",
+  "127": "\"",
+  "128": "c",
+  "129": "a",
+  "130": "t",
+  "131": "e",
+  "132": "g",
+  "133": "o",
+  "134": "r",
+  "135": "y",
+  "136": "\"",
+  "137": ":",
+  "138": "\"",
+  "139": "W",
+  "140": "E",
+  "141": "B",
+  "142": "S",
+  "143": "O",
+  "144": "C",
+  "145": "K",
+  "146": "E",
+  "147": "T",
+  "148": "\"",
+  "149": ",",
+  "150": "\"",
+  "151": "a",
+  "152": "m",
+  "153": "o",
+  "154": "u",
+  "155": "n",
+  "156": "t",
+  "157": "\"",
+  "158": ":",
+  "159": "1",
+  "160": "2",
+  "161": ",",
+  "162": "\"",
+  "163": "i",
+  "164": "s",
+  "165": "P",
+  "166": "a",
+  "167": "i",
+  "168": "d",
+  "169": "\"",
+  "170": ":",
+  "171": "n",
+  "172": "u",
+  "173": "l",
+  "174": "l",
+  "175": ",",
+  "176": "\"",
+  "177": "d",
+  "178": "u",
+  "179": "e",
+  "180": "D",
+  "181": "a",
+  "182": "t",
+  "183": "e",
+  "184": "\"",
+  "185": ":",
+  "186": "n",
+  "187": "u",
+  "188": "l",
+  "189": "l",
+  "190": ",",
+  "191": "\"",
+  "192": "_",
+  "193": "i",
+  "194": "d",
+  "195": "\"",
+  "196": ":",
+  "197": "\"",
+  "198": "6",
+  "199": "6",
+  "200": "d",
+  "201": "c",
+  "202": "f",
+  "203": "a",
+  "204": "4",
+  "205": "e",
+  "206": "0",
+  "207": "4",
+  "208": "5",
+  "209": "5",
+  "210": "e",
+  "211": "b",
+  "212": "2",
+  "213": "3",
+  "214": "4",
+  "215": "5",
+  "216": "0",
+  "217": "0",
+  "218": "b",
+  "219": "6",
+  "220": "1",
+  "221": "1",
+  "222": "\"",
+  "223": ",",
+  "224": "\"",
+  "225": "c",
+  "226": "r",
+  "227": "e",
+  "228": "a",
+  "229": "t",
+  "230": "e",
+  "231": "d",
+  "232": "A",
+  "233": "t",
+  "234": "\"",
+  "235": ":",
+  "236": "\"",
+  "237": "2",
+  "238": "0",
+  "239": "2",
+  "240": "4",
+  "241": "-",
+  "242": "0",
+  "243": "9",
+  "244": "-",
+  "245": "0",
+  "246": "8",
+  "247": "T",
+  "248": "0",
+  "249": "1",
+  "250": ":",
+  "251": "1",
+  "252": "3",
+  "253": ":",
+  "254": "5",
+  "255": "0",
+  "256": ".",
+  "257": "3",
+  "258": "6",
+  "259": "9",
+  "260": "Z",
+  "261": "\"",
+  "262": ",",
+  "263": "\"",
+  "264": "_",
+  "265": "_",
+  "266": "v",
+  "267": "\"",
+  "268": ":",
+  "269": "0",
+  "270": "}",
+  "271": "}"
+}
+2024-09-08T01:13:50.377Z [info] : Broadcast sent to API server 
+2024-09-08T01:13:50.377Z [info] : Broadcast completed 
+2024-09-08T01:13:58.005Z [info] : WebSocket server initialized 
+2024-09-08T01:13:58.182Z [info] : Connected to MongoDB 
+2024-09-08T01:13:58.183Z [info] : Server running on port 5000 
+2024-09-08T01:13:58.949Z [info] : New WebSocket client connected 
+2024-09-08T01:13:58.962Z [info] : WebSocket client disconnected 
+2024-09-08T01:13:59.300Z [info] : New WebSocket client connected 
+2024-09-08T01:13:59.318Z [info] : New WebSocket client connected 
+2024-09-08T01:14:01.082Z [info] : WebSocket client disconnected 
+2024-09-08T01:14:01.083Z [info] : WebSocket client disconnected 
+2024-09-08T01:14:01.419Z [info] : New WebSocket client connected 
+2024-09-08T01:14:01.433Z [info] : New WebSocket client connected 
+2024-09-08T01:14:12.647Z [info] : New WebSocket client connected 
+2024-09-08T01:14:12.664Z [info] : New WebSocket client connected 
+2024-09-08T01:15:02.469Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:15:02.469Z [info] : Entering broadcast function 
+2024-09-08T01:15:02.469Z [info] : Number of WebSocket clients: 4 
+2024-09-08T01:15:02.470Z [info] : Data sent to client 
+2024-09-08T01:15:02.471Z [info] : Data sent to client 
+2024-09-08T01:15:02.471Z [info] : Data sent to client 
+2024-09-08T01:15:02.471Z [info] : Data sent to client 
+2024-09-08T01:15:02.471Z [info] : Exiting broadcast function 
+2024-09-08T01:15:02.472Z [info] : Sending broadcast to API server: {
+  "0": "{",
+  "1": "\"",
+  "2": "t",
+  "3": "y",
+  "4": "p",
+  "5": "e",
+  "6": "\"",
+  "7": ":",
+  "8": "\"",
+  "9": "d",
+  "10": "e",
+  "11": "l",
+  "12": "e",
+  "13": "t",
+  "14": "e",
+  "15": "T",
+  "16": "r",
+  "17": "a",
+  "18": "n",
+  "19": "s",
+  "20": "a",
+  "21": "c",
+  "22": "t",
+  "23": "i",
+  "24": "o",
+  "25": "n",
+  "26": "\"",
+  "27": ",",
+  "28": "\"",
+  "29": "t",
+  "30": "r",
+  "31": "a",
+  "32": "n",
+  "33": "s",
+  "34": "a",
+  "35": "c",
+  "36": "t",
+  "37": "i",
+  "38": "o",
+  "39": "n",
+  "40": "I",
+  "41": "d",
+  "42": "\"",
+  "43": ":",
+  "44": "\"",
+  "45": "6",
+  "46": "6",
+  "47": "d",
+  "48": "c",
+  "49": "f",
+  "50": "a",
+  "51": "4",
+  "52": "e",
+  "53": "0",
+  "54": "4",
+  "55": "5",
+  "56": "5",
+  "57": "e",
+  "58": "b",
+  "59": "2",
+  "60": "3",
+  "61": "4",
+  "62": "5",
+  "63": "0",
+  "64": "0",
+  "65": "b",
+  "66": "6",
+  "67": "1",
+  "68": "1",
+  "69": "\"",
+  "70": ",",
+  "71": "\"",
+  "72": "u",
+  "73": "s",
+  "74": "e",
+  "75": "r",
+  "76": "I",
+  "77": "d",
+  "78": "\"",
+  "79": ":",
+  "80": "\"",
+  "81": "6",
+  "82": "6",
+  "83": "d",
+  "84": "b",
+  "85": "5",
+  "86": "f",
+  "87": "a",
+  "88": "4",
+  "89": "1",
+  "90": "5",
+  "91": "8",
+  "92": "4",
+  "93": "1",
+  "94": "f",
+  "95": "2",
+  "96": "5",
+  "97": "c",
+  "98": "6",
+  "99": "1",
+  "100": "0",
+  "101": "d",
+  "102": "6",
+  "103": "0",
+  "104": "a",
+  "105": "\"",
+  "106": "}"
+}
+2024-09-08T01:15:02.484Z [info] : Broadcast sent to API server 
+2024-09-08T01:15:02.484Z [info] : Broadcast completed 
+2024-09-08T01:15:53.369Z [info] : WebSocket client disconnected 
+2024-09-08T01:15:53.373Z [info] : WebSocket client disconnected 
+2024-09-08T01:15:53.374Z [info] : WebSocket client disconnected 
+2024-09-08T01:15:53.374Z [info] : WebSocket client disconnected 
+2024-09-08T01:15:53.713Z [info] : New WebSocket client connected 
+2024-09-08T01:15:53.735Z [info] : New WebSocket client connected 
+2024-09-08T01:16:34.787Z [info] : WebSocket server initialized 
+2024-09-08T01:16:34.937Z [info] : Connected to MongoDB 
+2024-09-08T01:16:34.937Z [info] : Server running on port 5000 
+2024-09-08T01:16:35.630Z [info] : New WebSocket client connected 
+2024-09-08T01:16:35.654Z [info] : New WebSocket client connected 
+2024-09-08T01:16:37.147Z [info] : WebSocket client disconnected 
+2024-09-08T01:16:37.148Z [info] : WebSocket client disconnected 
+2024-09-08T01:16:37.570Z [info] : New WebSocket client connected 
+2024-09-08T01:16:37.589Z [info] : New WebSocket client connected 
+2024-09-08T01:16:45.386Z [info] : About to broadcast new transaction 
+2024-09-08T01:16:45.399Z [info] : Broadcast sent to API server 
+2024-09-08T01:16:45.399Z [info] : Broadcast completed 
+2024-09-08T01:16:50.185Z [info] : About to broadcast deleted transaction 
+2024-09-08T01:16:50.188Z [info] : Broadcast sent to API server 
+2024-09-08T01:16:50.189Z [info] : Broadcast completed 

@@ -9,6 +9,7 @@ const logger = require('./logger');
 const updateLastActive = require('./middleware/updateLastActive');
 const { initializeWebSocket } = require('./websocket');
 
+const axios = require('axios');
 const app = express();
 const server = http.createServer(app);
 
@@ -38,6 +39,13 @@ async function connectToDatabase() {
   }
 }
 
+async function sendBroadcast(type, data) {
+  try {
+    await axios.post(`${process.env.API_URL}/api/broadcast`, { type, data });
+  } catch (err) {
+    logger.error('Error sending broadcast:', err);
+  }
+}
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/transactions', require('./middleware/verifyToken'), updateLastActive, require('./routes/transactions'));

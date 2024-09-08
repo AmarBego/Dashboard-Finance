@@ -9,42 +9,17 @@ import RecentTransactions from '../components/RecentTransactions';
 import BudgetOverview from '../components/BudgetOverview';
 import { format, parseISO } from 'date-fns';
 import { useMonthNavigation } from '../hooks/useMonthNavigation';
-import { useWebSocket } from '../hooks/useWebSocket';
 
 const MotionPaper = motion.create(Paper);
 
 const Dashboard = ({ userTransactions, user, updateTransactions }) => {
   const [transactions, setTransactions] = useState(userTransactions);
   const { currentMonth, filteredTransactions, handlePreviousMonth, handleNextMonth } = useMonthNavigation(transactions);
-  const { lastMessage } = useWebSocket('ws://localhost:5000'); // Adjust the URL as needed
-
-  useEffect(() => {
-    if (lastMessage) {
-      switch (lastMessage.type) {
-        case 'newTransaction':
-          setTransactions(prevTransactions => [...prevTransactions, lastMessage.transaction]);
-          break;
-        case 'updateTransaction':
-          setTransactions(prevTransactions =>
-            prevTransactions.map(t => t._id === lastMessage.transaction._id ? lastMessage.transaction : t)
-          );
-          break;
-        case 'deleteTransaction':
-          setTransactions(prevTransactions =>
-            prevTransactions.filter(t => t._id !== lastMessage.transactionId)
-          );
-          break;
-        default:
-          console.log('Unknown message type:', lastMessage.type);
-      }
-    }
-  }, [lastMessage]);
 
   useEffect(() => {
     setTransactions(userTransactions);
   }, [userTransactions]);
 
-  // Add a check to ensure transactions is defined
   if (!transactions) {
     return <Typography>Loading...</Typography>;
   }
