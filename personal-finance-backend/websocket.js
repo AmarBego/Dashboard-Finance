@@ -40,7 +40,11 @@ function initializeWebSocket(server, db) {
 
 async function broadcastToAPI(data) {
   try {
-    await axios.post(`${process.env.API_URL}/api/broadcast`, data);
+    await axios.post(`${process.env.API_URL}/api/broadcast`, data, {
+      headers: {
+        'x-api-key': process.env.API_KEY
+      }
+    });
   } catch (error) {
     logger.error('Error sending broadcast to API server:', error);
   }
