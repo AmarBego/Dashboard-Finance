@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Typography, Box, Paper, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -12,11 +12,15 @@ import { useMonthNavigation } from '../hooks/useMonthNavigation';
 
 const MotionPaper = motion.create(Paper);
 
-const Dashboard = ({ userTransactions, user }) => {
-  const { currentMonth, filteredTransactions, handlePreviousMonth, handleNextMonth } = useMonthNavigation(userTransactions);
+const Dashboard = ({ userTransactions, user, updateTransactions }) => {
+  const [transactions, setTransactions] = useState(userTransactions);
+  const { currentMonth, filteredTransactions, handlePreviousMonth, handleNextMonth } = useMonthNavigation(transactions);
 
-  // Add a check to ensure userTransactions is defined
-  if (!userTransactions) {
+  useEffect(() => {
+    setTransactions(userTransactions);
+  }, [userTransactions]);
+
+  if (!transactions) {
     return <Typography>Loading...</Typography>;
   }
 

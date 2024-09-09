@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/verifyToken');
 const Transaction = require('../models/Transaction');
+const { broadcastToAPI } = require('../websocket');
+const logger = require('../logger');
 
 // Get all transactions for a user
 router.get('/', auth, async (req, res) => {
@@ -9,7 +11,7 @@ router.get('/', auth, async (req, res) => {
     const transactions = await Transaction.find({ userId: req.user.id }).sort({ date: -1 });
     res.json(transactions);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in GET /api/transactions:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -25,14 +27,21 @@ router.post('/', auth, async (req, res) => {
       type,
       category,
       amount,
-      isPaid,
+      isPaid: dueDate ? (isPaid || false) : null,
       dueDate,
     });
 
     const transaction = await newTransaction.save();
+    
+    // Broadcast the new transaction
+    await broadcastToAPI({ 
+      type: 'newTransaction', 
+      transaction: { ...transaction.toObject(), userId: transaction.userId.toString() }
+    });
+    
     res.json(transaction);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in POST /api/transactions:', err);
     res.status(500).send('Server error');
   }
 });
@@ -42,8 +51,14 @@ router.put('/:id', auth, async (req, res) => {
   try {
     const { date, type, category, amount, isPaid, dueDate } = req.body;
 
-    let transactionFields = { date, type, category, amount, isPaid };
-    if (dueDate) transactionFields.dueDate = dueDate;
+    let transactionFields = { 
+      date, 
+      type, 
+      category, 
+      amount, 
+      dueDate,
+      isPaid: dueDate ? (isPaid || false) : null
+    };
 
     let transaction = await Transaction.findById(req.params.id);
 
@@ -60,9 +75,15 @@ router.put('/:id', auth, async (req, res) => {
       { new: true }
     );
 
+    // Broadcast the updated transaction
+    await broadcastToAPI({ 
+      type: 'updateTransaction', 
+      transaction: { ...transaction.toObject(), userId: transaction.userId.toString() }
+    });
+
     res.json(transaction);
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in PUT /api/transactions/:id:', err);
     res.status(500).send('Server Error');
   }
 });
@@ -82,9 +103,17 @@ router.delete('/:id', auth, async (req, res) => {
     }
 
     await Transaction.findByIdAndDelete(req.params.id);
+
+    // Broadcast the deleted transaction
+    await broadcastToAPI({ 
+      type: 'deleteTransaction', 
+      transactionId: req.params.id,
+      userId: transaction.userId.toString()
+    });
+
     res.json({ msg: 'Transaction removed' });
   } catch (err) {
-    console.error(err.message);
+    logger.error('Error in DELETE /api/transactions/:id:', err);
     res.status(500).send('Server error');
   }
 });

@@ -6,6 +6,12 @@ const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 
 router.post('/register', [
+  body('username')
+    .trim()
+    .isLength({ min: 3, max: 20 })
+    .withMessage('Username must be between 3 and 20 characters long')
+    .matches(/^[a-zA-Z0-9-]+$/)
+    .withMessage('Username can only contain letters, numbers, and hyphens'),
   body('email').isEmail().withMessage('Please enter a valid email'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
 ], async (req, res) => {
@@ -15,18 +21,30 @@ router.post('/register', [
   }
 
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
     
     // Check if user already exists
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ $or: [
+      { username: username.toLowerCase() },
+      { email: email.toLowerCase() }
+    ]});
     if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+      if (user.username.toLowerCase() === username.toLowerCase()) {
+        return res.status(400).json({ msg: 'Username already exists' });
+      } else {
+        return res.status(400).json({ msg: 'Email already exists' });
+      }
     }
 
     // Create new user
+    const now = new Date();
+    now.setSeconds(0, 0);
     user = new User({
-      email,
+      username: username.toLowerCase(),
+      email: email.toLowerCase(),
       password,
+      dateJoined: now,
+      lastActive: now
     });
 
     // Hash password
@@ -49,7 +67,13 @@ router.post('/register', [
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token, email: user.email });
+        res.json({ 
+          token, 
+          email: user.email,
+          username: user.username,
+          dateJoined: user.dateJoined,
+          lastActive: user.lastActive
+        });
       }
     );
   } catch (err) {
@@ -70,6 +94,10 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
+    const now = new Date();
+    now.setSeconds(0, 0);
+    user.lastActive = now;
+    await user.save();
     const payload = {
       user: {
         id: user.id,
@@ -81,7 +109,7 @@ router.post('/login', async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token, email: user.email });
+        res.json({ token, email: user.email, username: user.username });
       }
     );
   } catch (err) {

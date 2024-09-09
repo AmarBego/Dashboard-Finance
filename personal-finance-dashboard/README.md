@@ -21,7 +21,7 @@ This is the frontend application for the Personal Finance Dashboard.
 
 3. Create a `.env` file in the frontend root directory with the following content:
    ```
-   REACT_APP_API_URL=http://localhost:5000
+   REACT_APP_API_URL=http://localhost:3002
    ```
    Adjust the URL if your backend is running on a different port or host.
 
@@ -31,7 +31,7 @@ Start the frontend development server:
 ```bash
 npm start
 ```
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:3002`.
 
 ## Building for Production
 

@@ -6,7 +6,7 @@ import { StyledAppBar, LogoutButton } from './styles';
 
 const Header = ({ user, onLogout, onDrawerToggle }) => {
   const theme = useTheme();
-  const username = user ? user.email.split('@')[0] : '';
+  const displayName = user && user.username ? user.username : 'User';
 
   return (
     <StyledAppBar position="fixed">
@@ -26,10 +26,10 @@ const Header = ({ user, onLogout, onDrawerToggle }) => {
         {user && (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Avatar sx={{ bgcolor: theme.palette.secondary.main, color: theme.palette.secondary.contrastText }}>
-              {username.charAt(0).toUpperCase()}
+              {displayName.charAt(0).toUpperCase()}
             </Avatar>
             <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
-              Hello, {username}!
+              Hello, {displayName}!
             </Typography>
             <LogoutButton onClick={onLogout}>
               <LogoutIcon fontSize="small" />

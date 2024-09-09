@@ -12,7 +12,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, user, updateTransaction, fetchTransactions, deleteTransaction }) => {
-  const [setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [editedTransaction, setEditedTransaction] = useState({});
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -38,10 +38,6 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
       ...transaction,
       date: transaction.date ? transaction.date.split('T')[0] : '',
       dueDate: transaction.dueDate ? transaction.dueDate.split('T')[0] : '',
-      amount: transaction.amount || '',
-      category: transaction.category || '',
-      type: transaction.type || '',
-      isPaid: transaction.isPaid || false,
     });
     setIsEditDialogOpen(true);
   };
@@ -52,7 +48,11 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
   };
 
   const handleSave = async () => {
-    await updateTransaction(editedTransaction);
+    const updatedTransactionData = {
+      ...editedTransaction,
+      isPaid: editedTransaction.dueDate ? (editedTransaction.isPaid || false) : null
+    };
+    await updateTransaction(updatedTransactionData);
     setIsEditDialogOpen(false);
     setEditingId(null);
     fetchTransactions();
@@ -67,8 +67,7 @@ const Transactions = ({ userTransactions, handleAddTransaction, currentMonth, us
   const handlePaidToggle = async (transaction) => {
     const updatedTransaction = {
       ...transaction,
-      isPaid: !transaction.isPaid,
-      dueDate: !transaction.isPaid ? null : transaction.dueDate,
+      isPaid: transaction.dueDate ? !transaction.isPaid : null,
     };
     try {
       await updateTransaction(updatedTransaction);
