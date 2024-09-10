@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  Typography, Box, Grid, IconButton, InputAdornment 
+  Typography, Box, Grid, IconButton, InputAdornment, CircularProgress
 } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import PersonIcon from '@mui/icons-material/Person'; // Added for the username field
+import PersonIcon from '@mui/icons-material/Person';
 import { StyledPaper, GreenButton, GreenTabs, GreenTab, GreenTextField } from './styles';
 
 const Auth = ({ onLogin }) => {
@@ -17,10 +17,12 @@ const Auth = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [usernameError, setUsernameError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
     const url = `${process.env.REACT_APP_API_URL}/api/auth/${isLogin ? 'login' : 'register'}`;
     try {
       const response = await fetch(url, {
@@ -41,9 +43,12 @@ const Auth = ({ onLogin }) => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred. Please try again.');
+      setError('An error occurred. Please try again. The backend might be starting up, please wait a moment and try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
+
 
   const checkUsername = async (username) => {
     if (username.length < 3) {
@@ -94,6 +99,14 @@ const Auth = ({ onLogin }) => {
             <Typography color="error" align="center" sx={{ mb: 2 }}>
               {error}
             </Typography>
+          )}
+          {isLoading && (
+            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+              <CircularProgress />
+              <Typography variant="body2" sx={{ ml: 2 }}>
+                Connecting to backend. This may take a moment if the service is starting up...
+              </Typography>
+            </Box>
           )}
           <Box component="form" onSubmit={handleSubmit}>
             {!isLogin && (
@@ -161,9 +174,9 @@ const Auth = ({ onLogin }) => {
               variant="contained" 
               fullWidth 
               sx={{ mt: 3, mb: 2 }}
-              disabled={!isLogin && !!usernameError}
+              disabled={(!isLogin && !!usernameError) || isLoading}
             >
-              {isLogin ? 'Login' : 'Register'}
+              {isLoading ? <CircularProgress size={24} color="inherit" /> : (isLogin ? 'Login' : 'Register')}
             </GreenButton>
           </Box>
         </StyledPaper>
