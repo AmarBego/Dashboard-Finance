@@ -17,7 +17,7 @@
     "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "express": "^4.21.0",
-    "framer-motion": "^11.5.2",
+    "framer-motion": "^11.5.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.1",
     "notistack": "^3.0.1",
